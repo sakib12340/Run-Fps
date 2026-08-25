@@ -24,6 +24,21 @@ const localizedProfile = locale !== 'en'
   ? profileTranslations[game.id as keyof typeof profileTranslations]?.[locale as keyof typeof profileTranslations[keyof typeof profileTranslations]] ?? null
   : null;
 
+const gameSchema = {
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": game.title,
+  "description": `Check FPS estimates for ${game.title} across 5 hardware tiers at 1080p and 1440p. System requirements: ${game.ramRequirement}GB RAM, ${game.vramRequirement}GB VRAM.`,
+  "publisher": {
+    "@type": "Organization",
+    "name": "RunFps",
+    "url": "https://runfps.com"
+  },
+  "releaseYear": game.releaseYear,
+  "url": `https://runfps.com/${locale}/games/${game.id}`,
+  "operatingSystem": ["Windows", "macOS", "Linux"]
+};
+
 const tiers = [
   { name: t('games.detail.budget'), score: 65, gpu: "RTX 3060", cpu: "Ryzen 5 5600X" },
   { name: t('games.detail.mid'), score: 72, gpu: "RTX 4060", cpu: "Ryzen 5 7600X" },
@@ -47,6 +62,9 @@ const curve = game.performanceCurve;
 ---
 
 <Layout title={t('games.detail.title', { game: game.title })} description={t('games.detail.description', { game: game.title, ram: game.ramRequirement, vram: game.vramRequirement })}>
+    <script type="application/ld+json">
+    {gameSchema}
+    </script>
 
 <div class="py-6">
   <div class="flex items-center gap-3 flex-wrap">
