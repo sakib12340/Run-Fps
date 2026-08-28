@@ -392,8 +392,6 @@ export const translations = {
       riskText: 'This site is provided "as is" without any warranty. We are not liable for decisions made based on this data.',
       trademarks: 'Trademarks',
       trademarksText: 'All game and hardware names are trademarks of their respective owners. RunFps is not affiliated with any game publisher or hardware manufacturer.',
-      affiliate: 'Affiliate Disclosure',
-      affiliateText: 'As an Amazon Associate, we earn from qualifying purchases. Affiliate links may appear on this site at no extra cost to you.',
       changes: 'Changes',
       changesText: 'We may update these terms. Changes will be posted on this page with an updated date.',
       contact: 'Contact',
@@ -525,7 +523,7 @@ export const translations = {
       privacyPolicy: 'Datenschutz',
       termsOfService: 'AGB',
       contactUs: 'Kontakt',
-      disclaimer: '&copy; {year} RunFps. Alle Spielnamen, Logos und Bilder sind Marken ihrer jeweiligen Eigentümer. RunFps ist nicht mit Spieleherstellern oder Hardwareherstellern verbunden. FPS-Schätzungen sind Näherungswerte und können je nach Systemkonfiguration um \u00b110-15% abweichen. Als Amazon-Partner verdienen wir an qualifizierten Käufen.',
+      disclaimer: '&copy; {year} RunFps. Alle Spielnamen, Logos und Bilder sind Marken ihrer jeweiligen Eigentümer. RunFps ist nicht mit Spieleherstellern oder Hardwareherstellern verbunden. FPS-Schätzungen sind Näherungswerte und können je nach Systemkonfiguration um \u00b110-15% abweichen.',
       language: 'Sprache'
     },
     home: {
@@ -869,8 +867,6 @@ export const translations = {
       riskText: 'Diese Seite wird "wie besehen" ohne jegliche Garantie bereitgestellt. Wir haften nicht für Entscheidungen, die auf Basis dieser Daten getroffen werden.',
       trademarks: 'Markenrechte',
       trademarksText: 'Alle Spiel- und Hardwarenamen sind Marken ihrer jeweiligen Eigentümer. RunFps ist nicht mit Spieleherstellern oder Hardwareherstellern verbunden.',
-      affiliate: 'Partner-Offenlegung',
-      affiliateText: 'Als Amazon-Partner verdienen wir an qualifizierten Käufen. Affiliate-Links können auf dieser Seite erscheinen, ohne dass dir zusätzliche Kosten entstehen.',
       changes: 'Änderungen',
       changesText: 'Wir können diese Bedingungen aktualisieren. Änderungen werden auf dieser Seite mit einem aktualisierten Datum veröffentlicht.',
       contact: 'Kontakt',
@@ -1002,7 +998,7 @@ export const translations = {
       privacyPolicy: 'Confidentialité',
       termsOfService: 'CGU',
       contactUs: 'Contact',
-      disclaimer: '&copy; {year} RunFps. Les noms, logos et images de jeux sont des marques de leurs propriétaires respectifs. RunFps n\'est affilié à aucun éditeur de jeux ou fabricant de matériel. Les estimations FPS sont approximatives et peuvent varier de \u00b110-15% selon la configuration. En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.',
+      disclaimer: '&copy; {year} RunFps. Les noms, logos et images de jeux sont des marques de leurs propriétaires respectifs. RunFps n\'est affilié à aucun éditeur de jeux ou fabricant de matériel. Les estimations FPS sont approximatives et peuvent varier de \u00b110-15% selon la configuration.',
       language: 'Langue'
     },
     home: {
@@ -1346,8 +1342,6 @@ export const translations = {
       riskText: 'Ce site est fourni "tel quel" sans aucune garantie. Nous ne sommes pas responsables des décisions prises sur la base de ces données.',
       trademarks: 'Marques déposées',
       trademarksText: 'Tous les noms de jeux et de matériel sont des marques de leurs propriétaires respectifs. RunFps n\'est affilié à aucun éditeur de jeux ou fabricant de matériel.',
-      affiliate: 'Divulgation d\'affiliation',
-      affiliateText: 'En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises. Des liens d\'affiliation peuvent apparaître sur ce site sans frais supplémentaires pour toi.',
       changes: 'Modifications',
       changesText: 'Nous pouvons mettre à jour ces conditions. Les modifications seront publiées sur cette page avec une date mise à jour.',
       contact: 'Contact',
@@ -1479,7 +1473,7 @@ export const translations = {
       privacyPolicy: 'Privacidad',
       termsOfService: 'Términos',
       contactUs: 'Contacto',
-      disclaimer: '&copy; {year} RunFps. Todos los nombres, logotipos e imágenes de juegos son marcas comerciales de sus respectivos propietarios. RunFps no está afiliado a ningún editor de juegos o fabricante de hardware. Las estimaciones de FPS son aproximadas y pueden variar \u00b110-15% según la configuración del sistema. Como asociado de Amazon, ganamos con compras que califican.',
+      disclaimer: '&copy; {year} RunFps. Todos los nombres, logotipos e imágenes de juegos son marcas comerciales de sus respectivos propietarios. RunFps no está afiliado a ningún editor de juegos o fabricante de hardware. Las estimaciones de FPS son aproximadas y pueden variar \u00b110-15% según la configuración del sistema.',
       language: 'Idioma'
     },
     home: {
@@ -1823,8 +1817,6 @@ export const translations = {
       riskText: 'Este sitio se proporciona "tal cual" sin ninguna garantía. No somos responsables de las decisiones tomadas basadas en estos datos.',
       trademarks: 'Marcas comerciales',
       trademarksText: 'Todos los nombres de juegos y hardware son marcas comerciales de sus respectivos propietarios. RunFps no está afiliado a ningún editor de juegos o fabricante de hardware.',
-      affiliate: 'Divulgación de afiliados',
-      affiliateText: 'Como asociado de Amazon, ganamos con compras que califican. Los enlaces de afiliados pueden aparecer en este sitio sin costo adicional para ti.',
       changes: 'Cambios',
       changesText: 'Podemos actualizar estos términos. Los cambios se publicarán en esta página con una fecha actualizada.',
       contact: 'Contacto',
