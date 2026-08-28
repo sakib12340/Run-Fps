@@ -323,14 +323,16 @@ export const translations = {
       title: 'About RunFps - Free PC Gaming Performance Tool',
       description: 'RunFps is a free, privacy-first PC gaming performance tool. No signup, no tracking — just accurate FPS estimates and hardware comparisons.',
       heading: 'About RunFps',
-      tagline: 'Free, fast, private — PC gaming performance tools for everyone.',
-      intro: 'RunFps is a set of browser-based tools to help you estimate gaming performance, compare hardware, and optimize settings — all without signing up, installing anything, or sending data to a server.',
-      whatWeOffer: 'What We Offer',
-      privacyFirst: 'Privacy First',
-      builtForGamers: 'Built for Gamers',
-      privacyText: 'Every calculation runs in your browser. We collect no personal data, use no analytics, and have no accounts. See our {privacy} for details.',
-      builtForGamersText: 'Whether you\'re building a new PC, upgrading your current one, or just curious how a game will run — RunFps gives you the data you need to make informed decisions.',
-      privacyLink: 'Privacy Policy'
+      tagline: 'Free. Fast. Private. Made for players who want real numbers.',
+      intro: 'We built RunFps to answer one question quickly: will this game run well on my PC? Everything calculates right in your browser. No signup, no download, and your specs never leave your device.',
+      whatWeOffer: 'What you get',
+      privacyFirst: 'Private by design',
+      builtForGamers: 'Made for real setups',
+      privacyText: 'Your hardware stays on your device. No analytics, no accounts, no tracking. More in our {privacy}.',
+      builtForGamersText: 'Building a new PC, squeezing more FPS from your current one, or just checking before you buy — RunFps gives you plain numbers to decide with.',
+      privacyLink: 'Privacy Policy',
+      regularUpdates: 'Updated every month',
+      regularUpdatesText: 'We add new GPUs, CPUs and games monthly — not once a year. Curves and scores are refreshed when patches or drivers change real performance. Last full refresh: August 2026. Next: September 2026.'
     },
     methodology: {
       title: 'Methodology - How RunFps Calculates FPS',
@@ -347,22 +349,22 @@ export const translations = {
       limitations: 'Limitations',
       limitationsText: 'Estimates are ±10–15%. Drivers, thermals, background apps, laptop power limits, and game patches shift real FPS. Curves are hand-tuned approximations, not per-card measurements. Use the numbers to compare hardware relatively — not as a purchase guarantee.',
       updates: 'Updates',
-      updatesText: 'Scores and curves are updated when new hardware launches or major game patches change performance. See our GitHub history for changes. Questions? Contact us at {email}.'
+      updatesText: 'Scores and curves are updated monthly as new hardware launches and major patches change performance. We review new GPUs, CPUs and games every month. Questions? Contact us at {email}.'
     },
     contact: {
       title: 'Contact Us - RunFps',
-      description: 'Get in touch with RunFps — questions, feedback, bug reports, or partnership inquiries.',
-      heading: 'Contact Us',
-      tagline: 'We\'d love to hear from you.',
-      intro: 'Have a question, found a bug, or want to suggest a feature? Drop us a line.',
+      description: 'Contact the people behind RunFps — bug reports, game requests, or just feedback.',
+      heading: 'Contact',
+      tagline: 'Real inbox. We read every email ourselves.',
+      intro: 'Missing a GPU, game feels off, or found a bug? Tell us what happened and which browser you use. We reply in 2 to 3 days.',
       email: 'Email',
-      emailText: '{email} — we read every message.',
-      reportBug: 'Report a Bug',
-      bugText: 'If something isn\'t working right, please include your browser and device info so we can fix it faster.',
-      suggestFeature: 'Suggest a Feature',
-      featureText: 'Want to see a new GPU, game, or tool? Let us know. We\'re always looking to improve.',
-      partnerships: 'Partnerships',
-      partnershipsText: 'Interested in advertising or collaboration? Reach out at the same address.'
+      emailText: '{email} — yes, a human reads it.',
+      reportBug: 'Report a bug',
+      bugText: 'Include your browser, device, and what you clicked. A screenshot helps us fix it faster.',
+      suggestFeature: 'Request something',
+      featureText: 'Want a new game, GPU, or feature? We keep a list and ship what people actually ask for.',
+      partnerships: 'Work with us',
+      partnershipsText: 'For anything else, use the same email.'
     },
     privacy: {
       title: 'Privacy Policy',
@@ -805,7 +807,9 @@ export const translations = {
       builtForGamers: 'Für Spieler gemacht',
       privacyText: 'Jede Berechnung läuft in deinem Browser. Wir sammeln keine personenbezogenen Daten, verwenden kein Tracking und haben keine Konten. Details in unserer {privacy}.',
       builtForGamersText: 'Egal ob du einen neuen PC baust, deinen aktuellen aufrüstest oder einfach wissen willst, wie ein Spiel läuft — RunFps liefert die Daten für fundierte Entscheidungen.',
-      privacyLink: 'Datenschutzerklärung'
+      privacyLink: 'Datenschutzerklärung',
+      regularUpdates: 'Monatlich aktualisiert',
+      regularUpdatesText: 'Neue GPUs, CPUs und Spiele kommen monatlich dazu — nicht einmal im Jahr. Benchmarks und Kurven werden aktualisiert, wenn Patches oder Treiber die reale Leistung ändern. Letztes Update: August 2026. Nächstes geplant: September 2026.'
     },
     methodology: {
       title: 'Methodik - Wie RunFps FPS schätzt',
@@ -1280,7 +1284,9 @@ export const translations = {
       builtForGamers: 'Conçu pour les joueurs',
       privacyText: 'Chaque calcul s\'exécute dans ton navigateur. Nous ne collectons aucune donnée personnelle, n\'utilisons aucun outil d\'analyse et n\'avons pas de comptes. Vois notre {privacy} pour plus de détails.',
       builtForGamersText: 'Que tu construises un nouveau PC, que tu mettes à niveau ton actuel ou que tu sois simplement curieux de savoir comment un jeu fonctionnera — RunFps te donne les données nécessaires pour prendre des décisions éclairées.',
-      privacyLink: 'Politique de confidentialité'
+      privacyLink: 'Politique de confidentialité',
+      regularUpdates: 'Mis à jour chaque mois',
+      regularUpdatesText: 'Nouveaux GPU, CPU et jeux ajoutés chaque mois. Benchmarks et courbes rafraîchis quand les patchs ou pilotes changent les perfs réelles. Dernière mise à jour : août 2026. Prochaine : septembre 2026.'
     },
     methodology: {
       title: 'Méthodologie - Comment RunFps calcule les FPS',
@@ -1755,7 +1761,9 @@ export const translations = {
       builtForGamers: 'Hecho para jugadores',
       privacyText: 'Cada cálculo se ejecuta en tu navegador. No recopilamos datos personales, no usamos análisis y no tenemos cuentas. Consulta nuestra {privacy} para más detalles.',
       builtForGamersText: 'Ya sea que estés construyendo un nuevo PC, actualizando el actual o simplemente tengas curiosidad sobre cómo funcionará un juego — RunFps te da los datos que necesitas para tomar decisiones informadas.',
-      privacyLink: 'Política de privacidad'
+      privacyLink: 'Política de privacidad',
+      regularUpdates: 'Actualizado cada mes',
+      regularUpdatesText: 'Nuevos GPU, CPU y juegos añadidos cada mes. Benchmarks y curvas se actualizan cuando parches o controladores cambian el rendimiento real. Última actualización: agosto 2026. Próxima: septiembre 2026.'
     },
     methodology: {
       title: 'Metodología - Cómo RunFps calcula los FPS',

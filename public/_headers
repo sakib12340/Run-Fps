@@ -10,6 +10,16 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Cross-Origin-Resource-Policy: cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
+
+/.git/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/.env*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
 
 # Allow caching of hashed assets
 /_astro/*

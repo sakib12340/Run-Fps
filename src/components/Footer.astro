@@ -58,9 +58,12 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[^\/]+/, '') || '/';
         </ul>
       </div>
     </div>
-    <div class="mt-8 pt-6 border-t border-hairline dark:border-dark-hairline text-center">
+    <div class="mt-8 pt-6 border-t border-hairline dark:border-dark-hairline text-center space-y-2">
       <p class="text-xs text-mid-gray dark:text-dark-mid-gray leading-relaxed max-w-2xl mx-auto">
         {t('footer.disclaimer', { year: new Date().getFullYear() })}
+      </p>
+      <p class="text-xs font-mono text-mid-gray dark:text-dark-mid-gray">
+        Updated monthly <span aria-hidden="true">·</span> August 2026 refresh <span aria-hidden="true">·</span> <a href={p('/methodology')} class="underline underline-offset-2 hover:text-ink dark:hover:text-dark-ink">How we calculate</a>
       </p>
     </div>
   </div>
