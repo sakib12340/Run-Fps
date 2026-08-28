@@ -7,7 +7,7 @@ const fallback = translations.en.notFound;
 const allLocales = locales;
 ---
 
-<Layout title={fallback.title} description={fallback.description}>
+<Layout title={fallback.title} description={fallback.description} robots="noindex, nofollow">
 <script type="application/json" id="notfound-i18n" set:html={JSON.stringify(Object.fromEntries(locales.map(l => [l, (translations[l as keyof typeof translations] || translations.en).notFound])))}></script>
 <script type="application/json" id="notfound-locales" set:html={JSON.stringify(locales)}></script>
   <div class="flex flex-col items-center justify-center py-16 sm:py-24 text-center">

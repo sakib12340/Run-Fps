@@ -1,2 +1,2 @@
-# Google AdSense — REPLACE pub-XXXXXXXXXXXXXXXX with your publisher ID after Google approval (spot 2 of 2; spot 1 is in src/layouts/Layout.astro)
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# ads.txt — enable after Google AdSense approval
+# When approved, replace with: google.com, pub-XXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

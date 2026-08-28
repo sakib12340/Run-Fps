@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 ---
 
-<Layout title="Server Error - RunFps" description="Something went wrong on our end. Please try again.">
+<Layout title="Server Error - RunFps" description="Something went wrong on our end. Please try again." robots="noindex, nofollow">
 <script type="application/json" id="error-i18n" set:html={JSON.stringify({
   en: { heading: '500', text: 'Something went wrong on our end.', retry: 'Try Again', home: 'Go Home' },
   de: { heading: '500', text: 'Auf unserer Seite ist ein Fehler aufgetreten.', retry: 'Erneut versuchen', home: 'Zur Startseite' },

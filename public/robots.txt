@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://runfps.com/sitemap.xml
+Sitemap: https://runfps.com/sitemap-index.xml
