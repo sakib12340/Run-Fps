@@ -32,6 +32,7 @@ export default defineConfig({
   integrations: [
     icon(),
     sitemap({
+      filter: (page) => page !== 'https://runfps.com/' && page !== 'https://runfps.com',
       i18n: {
         defaultLocale: 'en',
         locales: {

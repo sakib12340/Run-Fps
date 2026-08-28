@@ -62,9 +62,7 @@ const curve = game.performanceCurve;
 ---
 
 <Layout title={t('games.detail.title', { game: game.title })} description={t('games.detail.description', { game: game.title, ram: game.ramRequirement, vram: game.vramRequirement })}>
-    <script type="application/ld+json">
-    {gameSchema}
-    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(gameSchema)}></script>
 
 <div class="py-6">
   <div class="flex items-center gap-3 flex-wrap">

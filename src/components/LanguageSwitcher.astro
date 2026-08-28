@@ -12,12 +12,12 @@ const path = Astro.url.pathname;
 const pathWithoutLocale = path.replace(/^\/[^\/]+/, '') || '/';
 ---
 
-<div class="relative group">
-  <button id="lang-btn" class="flex items-center gap-1 px-2 py-1.5 text-xs font-medium text-mid-gray hover:text-ink dark:text-dark-mid-gray dark:hover:text-dark-ink rounded-pill transition-colors duration-120 cursor-pointer bg-transparent border-0" aria-label={t('misc.switchLanguage')} aria-expanded="false" aria-controls="lang-menu">
+<div class="relative group lang-switcher">
+  <button class="lang-btn flex items-center gap-1 px-2 py-1.5 text-xs font-medium text-mid-gray hover:text-ink dark:text-dark-mid-gray dark:hover:text-dark-ink rounded-pill transition-colors duration-120 cursor-pointer bg-transparent border-0" aria-label={t('misc.switchLanguage')} aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
     <span class="hidden sm:inline">{localeLabels[currentLocale as keyof typeof localeLabels] || 'English'}</span>
   </button>
-  <div id="lang-menu" class="hidden absolute right-0 top-full mt-1 bg-paper dark:bg-dark-paper border border-hairline dark:border-dark-hairline rounded-lg shadow-lg py-1 min-w-[130px] z-50">
+  <div class="lang-menu hidden absolute right-0 top-full mt-1 bg-paper dark:bg-dark-paper border border-hairline dark:border-dark-hairline rounded-lg shadow-lg py-1 min-w-[130px] z-50">
     {locales.map(l => {
       const href = `/${l}${pathWithoutLocale}`;
       const isCurrent = l === currentLocale;
@@ -32,28 +32,47 @@ const pathWithoutLocale = path.replace(/^\/[^\/]+/, '') || '/';
 
 <script>
 (function() {
-  var btn = document.getElementById('lang-btn')!;
-  var menu = document.getElementById('lang-menu')!;
-  if (!btn || !menu) return;
-
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    menu.classList.toggle('hidden');
+  var switchers = document.querySelectorAll('.lang-switcher');
+  if (!switchers.length) return;
+  switchers.forEach(function(container) {
+    var btn = container.querySelector('.lang-btn') as HTMLElement;
+    var menu = container.querySelector('.lang-menu') as HTMLElement;
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var expanded = btn!.getAttribute('aria-expanded') === 'true';
+      switchers.forEach(function(other) {
+        if (other !== container) {
+          var otherBtn = other.querySelector('.lang-btn') as HTMLElement | null;
+          var otherMenu = other.querySelector('.lang-menu') as HTMLElement | null;
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          if (otherMenu) otherMenu.classList.add('hidden');
+        }
+      });
+      btn!.setAttribute('aria-expanded', String(!expanded));
+      menu!.classList.toggle('hidden');
+    });
   });
-
   document.addEventListener('click', function(e) {
-    if (!btn.contains(e.target as Node) && !menu.contains(e.target as Node)) {
-      menu.classList.add('hidden');
-      btn.setAttribute('aria-expanded', 'false');
-    }
+    var target = e.target as Node;
+    switchers.forEach(function(container) {
+      var btn = container.querySelector('.lang-btn') as HTMLElement | null;
+      var menu = container.querySelector('.lang-menu') as HTMLElement | null;
+      if (!btn || !menu) return;
+      if (!btn.contains(target) && !menu.contains(target)) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
-
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      menu.classList.add('hidden');
-      btn.setAttribute('aria-expanded', 'false');
+      switchers.forEach(function(container) {
+        var btn = container.querySelector('.lang-btn') as HTMLElement | null;
+        var menu = container.querySelector('.lang-menu') as HTMLElement | null;
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        if (menu) menu.classList.add('hidden');
+      });
     }
   });
 })();

@@ -1,5 +1,5 @@
 # Security Contact
-Contact: mailto:sakib@example.com
+Contact: mailto:runfps40@gmail.com
 
 # Preferred Languages
 Preferred-Languages: en
@@ -8,8 +8,7 @@ Preferred-Languages: en
 Canonical: https://runfps.com/.well-known/security.txt
 
 # Policy
-Policy: https://runfps.com/security
+Policy: https://runfps.com/en/contact
 
 # Expiry
-# This file expires 2027-01-01 — please update before then.
 Expires: 2027-01-01T00:00:00.000Z
