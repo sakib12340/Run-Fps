@@ -52,7 +52,7 @@ export const translations = {
       language: 'Language'
     },
     home: {
-      title: 'RunFps - Check Your FPS in Any Game',
+      title: 'Check Your FPS in Any Game',
       description: 'See how your PC runs {games} games. Pick your GPU and CPU, get instant FPS estimates, find what\'s slowing you down, and tweak settings for more frames. Free, no signup.',
       popularGames: 'Popular Games',
       viewAll: 'View all {count}',
@@ -332,6 +332,23 @@ export const translations = {
       builtForGamersText: 'Whether you\'re building a new PC, upgrading your current one, or just curious how a game will run — RunFps gives you the data you need to make informed decisions.',
       privacyLink: 'Privacy Policy'
     },
+    methodology: {
+      title: 'Methodology - How RunFps Calculates FPS',
+      description: 'Learn how RunFps estimates FPS: benchmark scores, Catmull-Rom interpolation, game curves, and limitations. Transparent, reproducible methodology.',
+      heading: 'Methodology',
+      tagline: 'How our estimates work — and their limits.',
+      intro: 'RunFps estimates FPS without sending your data anywhere. All calculations run in your browser using three inputs: your GPU, your CPU, and the game\'s performance curve.',
+      scores: 'Scores',
+      scoresText: 'Each GPU and CPU has a benchmark score from 0–100 based on real-world 1080p gaming performance (averaged from public benchmarks, reviews, and aggregated test data). Scores are normalized so 100 ≈ RTX 5090 / Core Ultra 9 tier, 65 ≈ budget tier. Scores are not linear — they reflect real gaming FPS, not synthetic benchmarks.',
+      curves: 'Game Curves',
+      curvesText: 'Each game has a performanceCurve mapping GPU scores to FPS at 1080p/High on a reference system (e.g., 5 points: {points}). Unknown points are interpolated with Catmull-Rom splines via engine.js, giving smooth estimates between measured scores. CPU influence, RAM/VRAM, and preset multipliers are then applied.',
+      pipeline: 'Calculation Pipeline',
+      pipelineText: 'FPS = interpolate(GPU score → curve) × CPU limiter × RAM/VRAM factor × resolution factor × preset factor (Low 1.4×, Med 1.15×, High 1.0×, Ultra 0.7×). Bottleneck % = relative GPU vs CPU headroom at the chosen resolution. Optimizer walks the game\'s settingsImpact table to suggest the cheapest visual changes to reach your target.',
+      limitations: 'Limitations',
+      limitationsText: 'Estimates are ±10–15%. Drivers, thermals, background apps, laptop power limits, and game patches shift real FPS. Curves are hand-tuned approximations, not per-card measurements. Use the numbers to compare hardware relatively — not as a purchase guarantee.',
+      updates: 'Updates',
+      updatesText: 'Scores and curves are updated when new hardware launches or major game patches change performance. See our GitHub history for changes. Questions? Contact us at {email}.'
+    },
     contact: {
       title: 'Contact Us - RunFps',
       description: 'Get in touch with RunFps — questions, feedback, bug reports, or partnership inquiries.',
@@ -512,7 +529,7 @@ export const translations = {
       language: 'Sprache'
     },
     home: {
-      title: 'RunFps - Prüfe deine FPS in jedem Spiel',
+      title: 'Prüfe deine FPS in jedem Spiel',
       description: 'Sieh, wie dein PC {games} Spiele ausführt. Wähle GPU und CPU, erhalte sofortige FPS-Schätzungen, finde Engpässe und optimiere Einstellungen für mehr Bilder pro Sekunde. Kostenlos, ohne Anmeldung.',
       popularGames: 'Beliebte Spiele',
       viewAll: 'Alle {count} anzeigen',
@@ -792,6 +809,23 @@ export const translations = {
       builtForGamersText: 'Egal ob du einen neuen PC baust, deinen aktuellen aufrüstest oder einfach wissen willst, wie ein Spiel läuft — RunFps liefert die Daten für fundierte Entscheidungen.',
       privacyLink: 'Datenschutzerklärung'
     },
+    methodology: {
+      title: 'Methodik - Wie RunFps FPS schätzt',
+      description: 'Wie RunFps FPS schätzt: Benchmark-Werte, Catmull-Rom Interpolation, Spielkurven und Grenzen.',
+      heading: 'Methodik',
+      tagline: 'Wie unsere Schätzungen funktionieren — und ihre Grenzen.',
+      intro: 'RunFps schätzt FPS ohne deine Daten zu versenden. Alle Berechnungen laufen in deinem Browser aus GPU, CPU und der Leistungskurve des Spiels.',
+      scores: 'Werte',
+      scoresText: 'Jede GPU/CPU hat einen Wert 0–100 basierend auf realer 1080p Gaming-Leistung (Durchschnitt öffentlicher Benchmarks). 100 ≈ RTX 5090 / Core Ultra 9, 65 ≈ Budget. Die Werte sind nicht linear.',
+      curves: 'Spielkurven',
+      curvesText: 'Jedes Spiel hat eine performanceCurve die GPU-Werte auf FPS abbildet. Unbekannte Punkte werden mit Catmull-Rom in engine.js interpoliert. CPU, RAM/VRAM und Preset-Multiplikatoren werden danach angewandt.',
+      pipeline: 'Berechnung',
+      pipelineText: 'FPS = interpolate(GPU→Kurve) × CPU-Limit × RAM/VRAM × Auflösung × Preset (Low 1.4×, Med 1.15×, High 1.0×, Ultra 0.7×). Engpass % = relativer GPU vs CPU Spielraum.',
+      limitations: 'Grenzen',
+      limitationsText: 'Schätzungen ±10–15%. Treiber, Thermik, Hintergrund-Apps und Patches verändern reale FPS. Kurven sind Näherungen, keine Einzelmessungen.',
+      updates: 'Updates',
+      updatesText: 'Werte und Kurven werden bei neuer Hardware oder großen Patches aktualisiert. Fragen? Schreib an {email}.'
+    },
     contact: {
       title: 'Kontakt - RunFps',
       description: 'Nimm Kontakt mit RunFps auf — Fragen, Feedback, Fehlermeldungen oder Partnerschaftsanfragen.',
@@ -972,7 +1006,7 @@ export const translations = {
       language: 'Langue'
     },
     home: {
-      title: 'RunFps - Vérifie tes FPS dans n\'importe quel jeu',
+      title: 'Vérifie tes FPS dans n\'importe quel jeu',
       description: 'Vois comment ton PC exécute {games} jeux. Choisis ton GPU et CPU, obtiens des estimations FPS instantanées, trouve ce qui ralentit et ajuste les paramètres pour plus d\'images. Gratuit, sans inscription.',
       popularGames: 'Jeux populaires',
       viewAll: 'Voir les {count}',
@@ -1252,6 +1286,23 @@ export const translations = {
       builtForGamersText: 'Que tu construises un nouveau PC, que tu mettes à niveau ton actuel ou que tu sois simplement curieux de savoir comment un jeu fonctionnera — RunFps te donne les données nécessaires pour prendre des décisions éclairées.',
       privacyLink: 'Politique de confidentialité'
     },
+    methodology: {
+      title: 'Méthodologie - Comment RunFps calcule les FPS',
+      description: 'Comment RunFps estime les FPS : scores de référence, interpolation Catmull-Rom, courbes de jeu et limites.',
+      heading: 'Méthodologie',
+      tagline: 'Comment nos estimations fonctionnent — et leurs limites.',
+      intro: 'RunFps estime les FPS sans envoyer tes données. Tous les calculs tournent dans ton navigateur à partir du GPU, CPU et de la courbe du jeu.',
+      scores: 'Scores',
+      scoresText: 'Chaque GPU/CPU a un score 0–100 basé sur les performances réelles en 1080p. 100 ≈ RTX 5090 / Core Ultra 9, 65 ≈ entrée de gamme.',
+      curves: 'Courbes de jeu',
+      curvesText: 'Chaque jeu a une performanceCurve liant les scores GPU aux FPS. Les points inconnus sont interpolés en Catmull-Rom via engine.js.',
+      pipeline: 'Calcul',
+      pipelineText: 'FPS = interpolate(GPU→courbe) × limite CPU × RAM/VRAM × résolution × preset (Low 1.4×, Med 1.15×, High 1.0×, Ultra 0.7×).',
+      limitations: 'Limites',
+      limitationsText: 'Estimations ±10–15%. Pilotes, thermique et patchs font varier les FPS réels. Les courbes sont des approximations.',
+      updates: 'Mises à jour',
+      updatesText: 'Scores et courbes mis à jour à chaque nouveau matériel ou patch majeur. Questions ? {email}.'
+    },
     contact: {
       title: 'Contact - RunFps',
       description: 'Contacte RunFps — questions, retours, signalements de bugs ou demandes de partenariat.',
@@ -1432,7 +1483,7 @@ export const translations = {
       language: 'Idioma'
     },
     home: {
-      title: 'RunFps - Comprueba tus FPS en cualquier juego',
+      title: 'Comprueba tus FPS en cualquier juego',
       description: 'Mira cómo tu PC ejecuta {games} juegos. Elige tu GPU y CPU, obtén estimaciones instantáneas de FPS, encuentra qué te frena y ajusta la configuración para más fotogramas. Gratis, sin registro.',
       popularGames: 'Juegos populares',
       viewAll: 'Ver todos {count}',
@@ -1711,6 +1762,23 @@ export const translations = {
       privacyText: 'Cada cálculo se ejecuta en tu navegador. No recopilamos datos personales, no usamos análisis y no tenemos cuentas. Consulta nuestra {privacy} para más detalles.',
       builtForGamersText: 'Ya sea que estés construyendo un nuevo PC, actualizando el actual o simplemente tengas curiosidad sobre cómo funcionará un juego — RunFps te da los datos que necesitas para tomar decisiones informadas.',
       privacyLink: 'Política de privacidad'
+    },
+    methodology: {
+      title: 'Metodología - Cómo RunFps calcula los FPS',
+      description: 'Cómo RunFps estima FPS: puntuaciones de referencia, interpolación Catmull-Rom, curvas de juego y limitaciones.',
+      heading: 'Metodología',
+      tagline: 'Cómo funcionan nuestras estimaciones — y sus límites.',
+      intro: 'RunFps estima FPS sin enviar tus datos. Todos los cálculos se ejecutan en tu navegador con GPU, CPU y la curva del juego.',
+      scores: 'Puntuaciones',
+      scoresText: 'Cada GPU/CPU tiene una puntuación 0–100 basada en rendimiento real en 1080p. 100 ≈ RTX 5090 / Core Ultra 9, 65 ≈ gama baja.',
+      curves: 'Curvas de juego',
+      curvesText: 'Cada juego tiene una performanceCurve que mapea puntuaciones GPU a FPS. Los puntos desconocidos se interpolan con Catmull-Rom en engine.js.',
+      pipeline: 'Cálculo',
+      pipelineText: 'FPS = interpolar(GPU→curva) × límite CPU × RAM/VRAM × resolución × preset (Bajo 1.4×, Medio 1.15×, Alto 1.0×, Ultra 0.7×).',
+      limitations: 'Limitaciones',
+      limitationsText: 'Estimaciones ±10–15%. Controladores, temperatura y parches varían FPS reales. Las curvas son aproximaciones.',
+      updates: 'Actualizaciones',
+      updatesText: 'Puntuaciones y curvas se actualizan con nuevo hardware o parches mayores. ¿Preguntas? {email}.'
     },
     contact: {
       title: 'Contacto - RunFps',

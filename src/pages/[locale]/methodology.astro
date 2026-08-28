@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations, locales } from '../../i18n/utils.js';
+
+export async function getStaticPaths() {
+  return locales.map(locale => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+const { t } = useTranslations(locale);
+---
+
+<Layout title={t('methodology.title')} description={t('methodology.description')}>
+  <div class="max-w-2xl mx-auto space-y-6">
+    <div>
+      <h1 class="font-display text-2xl font-semibold text-ink dark:text-dark-ink tracking-tight">{t('methodology.heading')}</h1>
+      <p class="text-sm text-mid-gray dark:text-dark-mid-gray mt-1">{t('methodology.tagline')}</p>
+    </div>
+
+    <p class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">{t('methodology.intro')}</p>
+
+    <div>
+      <p class="text-sm font-medium text-ink dark:text-dark-ink mb-1">{t('methodology.scores')}</p>
+      <p class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">{t('methodology.scoresText')}</p>
+    </div>
+
+    <div>
+      <p class="text-sm font-medium text-ink dark:text-dark-ink mb-1">{t('methodology.curves')}</p>
+      <p class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">{t('methodology.curvesText')}</p>
+    </div>
+
+    <div>
+      <p class="text-sm font-medium text-ink dark:text-dark-ink mb-1">{t('methodology.pipeline')}</p>
+      <p class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">{t('methodology.pipelineText')}</p>
+    </div>
+
+    <div>
+      <p class="text-sm font-medium text-ink dark:text-dark-ink mb-1">{t('methodology.limitations')}</p>
+      <p class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">{t('methodology.limitationsText')}</p>
+    </div>
+
+    <div>
+      <p class="text-sm font-medium text-ink dark:text-dark-ink mb-1">{t('methodology.updates')}</p>
+      <p class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed" set:html={t('methodology.updatesText', { email: '<a href="mailto:runfps40@gmail.com" class="text-ink dark:text-dark-ink underline underline-offset-2 hover:text-ember transition-colors duration-120">runfps40@gmail.com</a>' })}></p>
+    </div>
+  </div>
+</Layout>
