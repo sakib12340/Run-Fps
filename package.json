@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=run-fps"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.123",
