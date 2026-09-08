@@ -1981,7 +1981,7 @@ export const translations = {
     site: {
       name: 'RunFps',
       tagline: 'Veja quantos FPS seu PC faz em qualquer jogo',
-      description: 'Calculadora gratuita de desempenho para jogos e analisador de gargalo. Teste de FPS rápido, sem cadastro.'
+      description: 'Descubra quantos FPS seu PC roda em qualquer jogo. Calculadora gratuita de FPS e teste de gargalo — rápido, sem cadastro.'
     },
     nav: {
       calculator: 'Calculadora',
@@ -2022,7 +2022,7 @@ export const translations = {
     },
     home: {
       title: 'Veja quantos FPS seu PC faz em qualquer jogo',
-      description: 'Veja como seu PC roda {games} jogos. Escolha GPU e CPU, receba estimativa instantânea de FPS, descubra gargalos e otimize configurações. Grátis, sem cadastro.',
+      description: 'Descubra quantos FPS seu PC roda em {games} jogos. Teste de FPS gratuito: escolha GPU e CPU, veja FPS instantâneo, descubra gargalo e otimize. Sem cadastro.',
       popularGames: 'Jogos Populares',
       viewAll: 'Ver todos {count}',
       howItWorks: 'Como funciona',

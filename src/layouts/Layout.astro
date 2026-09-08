@@ -25,6 +25,23 @@ const canonicalUrl = canonical || `https://runfps.com${pathname}`;
 const defaultOgImage = 'https://runfps.com/web-app-manifest-512x512.png';
 const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : `https://runfps.com${ogImage}`) : defaultOgImage;
 const htmlLang = currentLocale;
+const siteDesc = t('site.description');
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "RunFps",
+  "url": "https://runfps.com",
+  "description": siteDesc,
+  "inLanguage": htmlLang,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `https://runfps.com/${htmlLang}/games?q={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
 ---
 
 <!doctype html>
@@ -71,23 +88,7 @@ const htmlLang = currentLocale;
     <meta name="theme-color" content="#f5f5f5" />
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <script is:inline type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "RunFps",
-      "url": "https://runfps.com",
-      "description": "Check your FPS in any game. Free PC gaming performance calculator and bottleneck analyzer.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://runfps.com/en/games?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
     <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
