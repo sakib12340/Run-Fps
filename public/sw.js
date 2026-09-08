@@ -1,4 +1,4 @@
-const CACHE_NAME = 'runfps-v8';
+const CACHE_NAME = 'runfps-v9';
 
 const PRECACHE_URLS = [
   '/en/',
@@ -57,6 +57,20 @@ const PRECACHE_URLS = [
   '/es/faq/',
   '/es/benchmarks/gpu/',
   '/es/benchmarks/cpu/',
+  '/pt/',
+  '/pt/calculator/',
+  '/pt/optimizer/',
+  '/pt/bottleneck/',
+  '/pt/games/',
+  '/pt/about/',
+  '/pt/contact/',
+  '/pt/privacy/',
+  '/pt/terms/',
+  '/pt/methodology/',
+  '/pt/compare/',
+  '/pt/faq/',
+  '/pt/benchmarks/gpu/',
+  '/pt/benchmarks/cpu/',
   '/engine.js',
   '/images/bg-pattern.svg',
   '/fonts/SpaceGrotesk-Variable.woff2',

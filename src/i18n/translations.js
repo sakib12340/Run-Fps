@@ -1,10 +1,11 @@
-export const locales = ['en', 'de', 'fr', 'es'];
+export const locales = ['en', 'de', 'fr', 'es', 'pt'];
 
 export const localeLabels = {
   en: 'English',
   de: 'Deutsch',
   fr: 'Français',
-  es: 'Español'
+  es: 'Español',
+  pt: 'Português (Brasil)'
 };
 
 export const translations = {
@@ -406,6 +407,31 @@ export const translations = {
       tagline: 'Answers to common questions.',
       items: [
         {
+          id: 'how-to-calculate',
+          question: 'How do I calculate FPS?',
+          answer: 'FPS = frames rendered / seconds, or 1000 / frame time in ms. For estimates, RunFps combines GPU and CPU benchmark scores (0-100) with a game performance curve, plus RAM, resolution and quality settings to predict FPS. For real FPS, use an in-game overlay or the RunFps FPS Calculator.'
+        },
+        {
+          id: 'increase-fps',
+          question: 'How can I increase my FPS?',
+          answer: 'Use the RunFps Settings Optimizer for target FPS, then: lower resolution and quality preset, update GPU drivers, enable XMP/DOCP for RAM, close background apps and overlays, clean thermals, and upgrade the bottlenecked part (check the Bottleneck Calculator). Even small tweaks can add 20-40% FPS.'
+        },
+        {
+          id: 'fix-low-fps',
+          question: 'How do I fix low FPS?',
+          answer: 'Update GPU drivers, lower graphics settings and resolution, close background processes, check CPU/GPU temperatures for throttling, run the Bottleneck Calculator to find the limiting part, ensure dual-channel RAM, and scan for malware. If FPS stays low, a GPU or CPU upgrade gives the biggest gain.'
+        },
+        {
+          id: '60-vs-120',
+          question: 'Is 60 FPS good or 120 FPS?',
+          answer: '60 FPS is smooth and good for most games. 120 FPS is noticeably smoother with lower input lag, ideal for competitive shooters on a 120/144Hz+ monitor. Above your monitor refresh rate you see diminishing returns, so match FPS to your display for the best experience.'
+        },
+        {
+          id: 'one-frame-60fps',
+          question: 'How much is 1 frame in 60 FPS?',
+          answer: 'At 60 FPS, 1 frame = 16.67ms (1000ms / 60). At 120 FPS it is 8.33ms and at 30 FPS it is 33.33ms. Lower frame time means smoother motion and less input lag.'
+        },
+        {
           id: 'accuracy',
           question: 'How accurate are the FPS estimates?',
           answer: 'FPS estimates are based on GPU and CPU benchmark scores interpolated against real game performance data. Actual FPS may vary by \u00b110-15% depending on your specific system configuration, drivers, background processes, and other factors. We recommend using the estimates as a general guide rather than an exact prediction.'
@@ -414,21 +440,6 @@ export const translations = {
           id: 'calculation',
           question: 'How does the FPS calculation work?',
           answer: 'Each GPU and CPU has a benchmark score (0-100). Each game has a performance curve mapping GPU scores to FPS. We combine this with your CPU score, RAM configuration, resolution, quality preset, and other settings to estimate your FPS. All calculations run locally in your browser \u2014 no data is sent anywhere.'
-        },
-        {
-          id: 'signup',
-          question: 'Do I need to sign up or pay?',
-          answer: 'No. Everything is completely free. No signup, no account, no premium tiers. Just show up and use it.'
-        },
-        {
-          id: 'upgrades',
-          question: 'Can I trust the upgrade suggestions?',
-          answer: 'Upgrade suggestions pick the next sensible step above your current part and filter it so it pairs well with your other component — we never recommend jumping several tiers at once. The estimated FPS gain is computed by simulating your system with the upgraded part. Actual performance depends on your full system, but relative ranking is a reliable indicator.'
-        },
-        {
-          id: 'comparison',
-          question: 'How do you compare GPUs and CPUs?',
-          answer: 'Hardware is ranked by a composite benchmark score (0-100) based on real-world gaming performance. You can compare specs side by side and see estimated FPS differences across popular games using a standardized test system.'
         },
         {
           id: 'can-it-run',
@@ -441,14 +452,19 @@ export const translations = {
           answer: 'Each game page in the Games Library includes RAM, VRAM, and storage requirements. You can also see estimated FPS across budget to ultra hardware tiers to know exactly what to expect.'
         },
         {
+          id: 'comparison',
+          question: 'How do you compare GPUs and CPUs?',
+          answer: 'Hardware is ranked by a composite benchmark score (0-100) based on real-world gaming performance. You can compare specs side by side and see estimated FPS differences across popular games using a standardized test system.'
+        },
+        {
+          id: 'upgrades',
+          question: 'Can I trust the upgrade suggestions?',
+          answer: 'Upgrade suggestions pick the next sensible step above your current part and filter it so it pairs well with your other component — we never recommend jumping several tiers at once. The estimated FPS gain is computed by simulating your system with the upgraded part. Actual performance depends on your full system, but relative ranking is a reliable indicator.'
+        },
+        {
           id: 'laptop',
           question: 'Will my laptop run these games?',
           answer: 'If your laptop has a dedicated GPU, you can look it up in our database. Select your laptop\'s GPU and CPU in the FPS Calculator to get estimates. Note that laptop GPUs typically perform slightly below their desktop counterparts due to thermal and power limits.'
-        },
-        {
-          id: 'updates',
-          question: 'How often is the data updated?',
-          answer: 'New GPUs, CPUs, and games are added regularly. Game performance data is updated to reflect patches and driver improvements. Check back often for the latest additions.'
         }
       ]
     },
@@ -883,6 +899,31 @@ export const translations = {
       tagline: 'Antworten auf häufige Fragen.',
       items: [
         {
+          id: 'how-to-calculate',
+          question: 'Wie berechne ich FPS?',
+          answer: 'FPS = gerenderte Bilder / Sekunden, oder 1000 / Frame-Zeit in ms. Für Schätzungen kombiniert RunFps GPU- und CPU-Benchmark-Werte (0-100) mit einer Spiele-Leistungskurve plus RAM, Auflösung und Qualitätseinstellungen, um FPS vorherzusagen. Für echte FPS nutze ein In-Game-Overlay oder den RunFps FPS-Rechner.'
+        },
+        {
+          id: 'increase-fps',
+          question: 'Wie kann ich meine FPS erhöhen?',
+          answer: 'Nutze den RunFps Einstellungs-Optimierer für Ziel-FPS, dann: Auflösung und Qualität senken, GPU-Treiber aktualisieren, XMP/DOCP für RAM aktivieren, Hintergrund-Apps und Overlays schließen, Thermik prüfen und das limitierende Bauteil aufrüsten (Engpass-Rechner prüfen). Schon kleine Anpassungen bringen 20-40% mehr FPS.'
+        },
+        {
+          id: 'fix-low-fps',
+          question: 'Wie behebe ich niedrige FPS?',
+          answer: 'GPU-Treiber aktualisieren, Grafikeinstellungen und Auflösung senken, Hintergrundprozesse schließen, CPU/GPU-Temperaturen auf Drosselung prüfen, Engpass-Rechner ausführen um das limitierende Bauteil zu finden, Dual-Channel-RAM sicherstellen und auf Malware prüfen. Bleiben FPS niedrig, bringt ein GPU- oder CPU-Upgrade den größten Gewinn.'
+        },
+        {
+          id: '60-vs-120',
+          question: 'Sind 60 FPS gut oder 120 FPS?',
+          answer: '60 FPS sind flüssig und für die meisten Spiele gut. 120 FPS sind spürbar flüssiger mit geringerer Eingabelatenz, ideal für kompetitive Shooter auf einem 120/144Hz+-Monitor. Über der Bildwiederholrate deines Monitors gibt es abnehmenden Nutzen — passe FPS an dein Display an.'
+        },
+        {
+          id: 'one-frame-60fps',
+          question: 'Wie viel ist 1 Frame bei 60 FPS?',
+          answer: 'Bei 60 FPS = 16,67 ms (1000 ms / 60). Bei 120 FPS sind es 8,33 ms und bei 30 FPS 33,33 ms. Niedrigere Frame-Zeit bedeutet flüssigere Bewegung und weniger Eingabelatenz.'
+        },
+        {
           id: 'accuracy',
           question: 'Wie genau sind die FPS-Schätzungen?',
           answer: 'Die FPS-Schätzungen basieren auf GPU- und CPU-Benchmark-Werten, die mit realen Spieleleistungsdaten interpoliert werden. Die tatsächliche FPS kann je nach Systemkonfiguration, Treibern, Hintergrundprozessen und anderen Faktoren um \u00b110-15% abweichen. Wir empfehlen, die Schätzungen als allgemeinen Leitfaden zu verwenden.'
@@ -891,21 +932,6 @@ export const translations = {
           id: 'calculation',
           question: 'Wie funktioniert die FPS-Berechnung?',
           answer: 'Jede GPU und CPU hat einen Benchmark-Wert (0-100). Jedes Spiel hat eine Leistungskurve, die GPU-Werte auf FPS abbildet. Wir kombinieren dies mit deinem CPU-Wert, RAM-Konfiguration, Auflösung, Qualitätseinstellungen und weiteren Faktoren. Alle Berechnungen laufen lokal in deinem Browser \u2014 keine Daten werden gesendet.'
-        },
-        {
-          id: 'signup',
-          question: 'Muss ich mich anmelden oder bezahlen?',
-          answer: 'Nein. Alles ist völlig kostenlos. Keine Anmeldung, kein Konto, keine Premium-Stufen. Einfach kommen und nutzen.'
-        },
-        {
-          id: 'upgrades',
-          question: 'Kann ich den Upgrade-Vorschlägen vertrauen?',
-          answer: 'Upgrade-Vorschläge wählen den nächsten sinnvollen Schritt über deinem aktuellen Bauteil und filtern so, dass er gut zu deiner anderen Komponente passt — wir empfehlen nie Sprünge über mehrere Stufen. Der geschätzte FPS-Gewinn wird berechnet, indem dein System mit dem aufgerüsteten Bauteil simuliert wird. Die tatsächliche Leistung hängt von deinem gesamten System ab, aber die relative Rangfolge ist ein zuverlässiger Indikator.'
-        },
-        {
-          id: 'comparison',
-          question: 'Wie vergleicht ihr GPUs und CPUs?',
-          answer: 'Hardware wird anhand eines zusammengesetzten Benchmark-Werts (0-100) basierend auf realer Spieleleistung eingestuft. Du kannst Spezifikationen nebeneinander vergleichen und geschätzte FPS-Unterschiede in beliebten Spielen sehen.'
         },
         {
           id: 'can-it-run',
@@ -918,14 +944,19 @@ export const translations = {
           answer: 'Jede Spielseite in der Spielebibliothek enthält RAM-, VRAM- und Speicheranforderungen. Du kannst auch geschätzte FPS von Budget- bis Ultra-Hardware sehen, um genau zu wissen, was dich erwartet.'
         },
         {
+          id: 'comparison',
+          question: 'Wie vergleicht ihr GPUs und CPUs?',
+          answer: 'Hardware wird anhand eines zusammengesetzten Benchmark-Werts (0-100) basierend auf realer Spieleleistung eingestuft. Du kannst Spezifikationen nebeneinander vergleichen und geschätzte FPS-Unterschiede in beliebten Spielen sehen.'
+        },
+        {
+          id: 'upgrades',
+          question: 'Kann ich den Upgrade-Vorschlägen vertrauen?',
+          answer: 'Upgrade-Vorschläge wählen den nächsten sinnvollen Schritt über deinem aktuellen Bauteil und filtern so, dass er gut zu deiner anderen Komponente passt — wir empfehlen nie Sprünge über mehrere Stufen. Der geschätzte FPS-Gewinn wird berechnet, indem dein System mit dem aufgerüsteten Bauteil simuliert wird. Die tatsächliche Leistung hängt von deinem gesamten System ab, aber die relative Rangfolge ist ein zuverlässiger Indikator.'
+        },
+        {
           id: 'laptop',
           question: 'Laufen diese Spiele auf meinem Laptop?',
           answer: 'Wenn dein Laptop eine dedizierte GPU hat, kannst du sie in unserer Datenbank finden. Wähle die GPU und CPU deines Laptops im FPS-Rechner für Schätzungen. Laptop-GPUs schneiden aufgrund thermischer und Leistungsgrenzen in der Regel etwas schlechter ab als Desktop-GPUs.'
-        },
-        {
-          id: 'updates',
-          question: 'Wie oft werden die Daten aktualisiert?',
-          answer: 'Neue GPUs, CPUs und Spiele werden regelmäßig hinzugefügt. Spieleleistungsdaten werden aktualisiert, um Patches und Treiberverbesserungen widerzuspiegeln. Schau regelmäßig vorbei.'
         }
       ]
     },
@@ -1360,6 +1391,31 @@ export const translations = {
       tagline: 'Réponses aux questions courantes.',
       items: [
         {
+          id: 'how-to-calculate',
+          question: 'Comment calculer les FPS ?',
+          answer: 'FPS = images rendues / secondes, ou 1000 / temps de frame en ms. Pour les estimations, RunFps combine les scores de benchmark GPU et CPU (0-100) avec une courbe de performance du jeu, plus RAM, résolution et paramètres qualité pour prédire les FPS. Pour les FPS réels, utilise un overlay en jeu ou le Calculateur FPS RunFps.'
+        },
+        {
+          id: 'increase-fps',
+          question: 'Comment augmenter mes FPS ?',
+          answer: 'Utilise l\'Optimiseur de paramètres RunFps pour viser un FPS cible, puis : baisse résolution et qualité, mets à jour les pilotes GPU, active XMP/DOCP pour la RAM, ferme les apps en arrière-plan et overlays, nettoie la thermique et mets à niveau le composant limitant (vérifie avec l\'Analyseur de goulot). De petits ajustements peuvent ajouter 20-40% de FPS.'
+        },
+        {
+          id: 'fix-low-fps',
+          question: 'Comment corriger des FPS faibles ?',
+          answer: 'Mets à jour les pilotes GPU, baisse les paramètres graphiques et la résolution, ferme les processus en arrière-plan, vérifie les températures CPU/GPU pour le throttling, lance l\'Analyseur de goulot pour trouver le composant limitant, assure-toi d\'être en dual-channel RAM et scanne les malwares. Si ça reste faible, une mise à niveau GPU ou CPU apporte le plus gros gain.'
+        },
+        {
+          id: '60-vs-120',
+          question: '60 FPS est-ce bien ou 120 FPS ?',
+          answer: '60 FPS est fluide et bien pour la plupart des jeux. 120 FPS est nettement plus fluide avec moins de latence d\'entrée, idéal pour les shooters compétitifs sur écran 120/144Hz+. Au-delà du taux de rafraîchissement de ton écran, le gain diminue — adapte tes FPS à ton écran.'
+        },
+        {
+          id: 'one-frame-60fps',
+          question: 'Combien vaut 1 image à 60 FPS ?',
+          answer: 'À 60 FPS, 1 image = 16,67 ms (1000 ms / 60). À 120 FPS c\'est 8,33 ms et à 30 FPS 33,33 ms. Un temps de frame plus bas signifie un mouvement plus fluide et moins de latence.'
+        },
+        {
           id: 'accuracy',
           question: 'Quelle est la précision des estimations FPS ?',
           answer: 'Les estimations FPS sont basées sur les scores de benchmark GPU et CPU interpolés par rapport aux données de performance réelles des jeux. Les FPS réels peuvent varier de \u00b110-15% selon la configuration spécifique de ton système, les pilotes, les processus en arrière-plan et d\'autres facteurs. Nous recommandons d\'utiliser les estimations comme un guide général.'
@@ -1368,21 +1424,6 @@ export const translations = {
           id: 'calculation',
           question: 'Comment fonctionne le calcul FPS ?',
           answer: 'Chaque GPU et CPU a un score de benchmark (0-100). Chaque jeu a une courbe de performance qui mappe les scores GPU aux FPS. Nous combinons cela avec ton score CPU, la configuration RAM, la résolution, les paramètres de qualité et d\'autres facteurs pour estimer tes FPS. Tous les calculs s\'exécutent localement dans ton navigateur \u2014 aucune donnée n\'est envoyée.'
-        },
-        {
-          id: 'signup',
-          question: 'Dois-je m\'inscrire ou payer ?',
-          answer: 'Non. Tout est complètement gratuit. Pas d\'inscription, pas de compte, pas de niveaux premium. Viens et utilise.'
-        },
-        {
-          id: 'upgrades',
-          question: 'Puis-je faire confiance aux suggestions de mise à niveau ?',
-          answer: 'Les suggestions d\'amélioration choisissent le prochain pas logique au-dessus de ton composant actuel et le filtrent pour qu\'il s\'associe bien à ton autre composant — nous ne recommandons jamais de sauter plusieurs paliers à la fois. Le gain de FPS estimé est calculé en simulant ton système avec le composant amélioré. Les performances réelles dépendent de l\'ensemble du système, mais le classement relatif reste un indicateur fiable.'
-        },
-        {
-          id: 'comparison',
-          question: 'Comment comparez-vous les GPUs et les CPUs ?',
-          answer: 'Le matériel est classé par un score de benchmark composite (0-100) basé sur les performances réelles de jeu. Tu peux comparer les spécifications côte à côte et voir les différences estimées de FPS dans les jeux populaires.'
         },
         {
           id: 'can-it-run',
@@ -1395,14 +1436,19 @@ export const translations = {
           answer: 'Chaque page de jeu dans la Bibliothèque de jeux inclut les besoins en RAM, VRAM et stockage. Tu peux aussi voir les FPS estimés du matériel d\'entrée de gamme à ultra pour savoir exactement à quoi t\'attendre.'
         },
         {
+          id: 'comparison',
+          question: 'Comment comparez-vous les GPUs et les CPUs ?',
+          answer: 'Le matériel est classé par un score de benchmark composite (0-100) basé sur les performances réelles de jeu. Tu peux comparer les spécifications côte à côte et voir les différences estimées de FPS dans les jeux populaires.'
+        },
+        {
+          id: 'upgrades',
+          question: 'Puis-je faire confiance aux suggestions de mise à niveau ?',
+          answer: 'Les suggestions d\'amélioration choisissent le prochain pas logique au-dessus de ton composant actuel et le filtrent pour qu\'il s\'associe bien à ton autre composant — nous ne recommandons jamais de sauter plusieurs paliers à la fois. Le gain de FPS estimé est calculé en simulant ton système avec le composant amélioré. Les performances réelles dépendent de l\'ensemble du système, mais le classement relatif reste un indicateur fiable.'
+        },
+        {
           id: 'laptop',
           question: 'Mon portable fera-t-il tourner ces jeux ?',
           answer: 'Si ton portable a un GPU dédié, tu peux le rechercher dans notre base de données. Sélectionne le GPU et le CPU de ton portable dans le Calculateur FPS pour obtenir des estimations. Les GPUs portables sont généralement un peu moins performants que leurs homologues de bureau en raison des limites thermiques et de puissance.'
-        },
-        {
-          id: 'updates',
-          question: 'À quelle fréquence les données sont-elles mises à jour ?',
-          answer: 'De nouveaux GPUs, CPUs et jeux sont ajoutés régulièrement. Les données de performance des jeux sont mises à jour pour refléter les patches et les améliorations de pilotes. Reviens souvent pour voir les dernières nouveautés.'
         }
       ]
     },
@@ -1837,6 +1883,31 @@ export const translations = {
       tagline: 'Respuestas a preguntas comunes.',
       items: [
         {
+          id: 'how-to-calculate',
+          question: '¿Cómo calculo los FPS?',
+          answer: 'FPS = fotogramas renderizados / segundos, o 1000 / tiempo de fotograma en ms. Para estimaciones, RunFps combina puntuaciones de benchmark de GPU y CPU (0-100) con una curva de rendimiento del juego, más RAM, resolución y ajustes de calidad para predecir FPS. Para FPS reales, usa un overlay en el juego o la Calculadora FPS de RunFps.'
+        },
+        {
+          id: 'increase-fps',
+          question: '¿Cómo puedo aumentar mis FPS?',
+          answer: 'Usa el Optimizador de ajustes de RunFps para tu FPS objetivo, luego: baja resolución y calidad, actualiza controladores GPU, activa XMP/DOCP para RAM, cierra apps en segundo plano y overlays, limpia la térmica y mejora el componente limitante (comprueba con la Calculadora de cuello de botella). Pequeños ajustes pueden dar 20-40% más FPS.'
+        },
+        {
+          id: 'fix-low-fps',
+          question: '¿Cómo arreglo los FPS bajos?',
+          answer: 'Actualiza controladores GPU, baja ajustes gráficos y resolución, cierra procesos en segundo plano, revisa temperaturas de CPU/GPU por throttling, ejecuta la Calculadora de cuello de botella para encontrar el limitante, asegura RAM en dual-channel y escanea malware. Si siguen bajos, una mejora de GPU o CPU da la mayor ganancia.'
+        },
+        {
+          id: '60-vs-120',
+          question: '¿Son buenos 60 FPS o 120 FPS?',
+          answer: '60 FPS es fluido y bueno para la mayoría de juegos. 120 FPS es notablemente más fluido con menos latencia, ideal para shooters competitivos en monitor 120/144Hz+. Por encima de la tasa de refresco de tu monitor hay rendimiento decreciente, así que ajusta los FPS a tu pantalla.'
+        },
+        {
+          id: 'one-frame-60fps',
+          question: '¿Cuánto es 1 fotograma a 60 FPS?',
+          answer: 'A 60 FPS, 1 fotograma = 16,67 ms (1000 ms / 60). A 120 FPS son 8,33 ms y a 30 FPS 33,33 ms. Menor tiempo de fotograma significa movimiento más fluido y menos retardo.'
+        },
+        {
           id: 'accuracy',
           question: '¿Qué precisión tienen las estimaciones de FPS?',
           answer: 'Las estimaciones de FPS se basan en puntuaciones de benchmark de GPU y CPU interpoladas con datos reales de rendimiento en juegos. Los FPS reales pueden variar \u00b110-15% según la configuración específica de tu sistema, controladores, procesos en segundo plano y otros factores. Recomendamos usar las estimaciones como guía general.'
@@ -1845,21 +1916,6 @@ export const translations = {
           id: 'calculation',
           question: '¿Cómo funciona el cálculo de FPS?',
           answer: 'Cada GPU y CPU tiene una puntuación de benchmark (0-100). Cada juego tiene una curva de rendimiento que mapea las puntuaciones de GPU a FPS. Combinamos esto con tu puntuación de CPU, configuración de RAM, resolución, calidad preestablecida y otros ajustes para estimar tus FPS. Todos los cálculos se ejecutan localmente en tu navegador \u2014 no se envían datos a ningún lado.'
-        },
-        {
-          id: 'signup',
-          question: '¿Necesito registrarme o pagar?',
-          answer: 'No. Todo es completamente gratuito. Sin registro, sin cuenta, sin niveles premium. Solo ven y úsalo.'
-        },
-        {
-          id: 'upgrades',
-          question: '¿Puedo confiar en las sugerencias de actualización?',
-          answer: 'Las sugerencias de mejora eligen el siguiente paso lógico por encima de tu componente actual y lo filtran para que combine bien con tu otro componente — nunca recomendamos saltar varios niveles a la vez. La ganancia estimada de FPS se calcula simulando tu sistema con el componente mejorado. El rendimiento real depende de tu sistema completo, pero la clasificación relativa es un indicador fiable.'
-        },
-        {
-          id: 'comparison',
-          question: '¿Cómo comparáis GPUs y CPUs?',
-          answer: 'El hardware se clasifica mediante una puntuación de benchmark compuesta (0-100) basada en el rendimiento real en juegos. Puedes comparar especificaciones lado a lado y ver diferencias estimadas de FPS en juegos populares.'
         },
         {
           id: 'can-it-run',
@@ -1872,14 +1928,19 @@ export const translations = {
           answer: 'Cada página de juego en la Biblioteca de juegos incluye requisitos de RAM, VRAM y almacenamiento. También puedes ver FPS estimados desde hardware económico hasta ultra para saber exactamente qué esperar.'
         },
         {
+          id: 'comparison',
+          question: '¿Cómo comparáis GPUs y CPUs?',
+          answer: 'El hardware se clasifica mediante una puntuación de benchmark compuesta (0-100) basada en el rendimiento real en juegos. Puedes comparar especificaciones lado a lado y ver diferencias estimadas de FPS en juegos populares.'
+        },
+        {
+          id: 'upgrades',
+          question: '¿Puedo confiar en las sugerencias de actualización?',
+          answer: 'Las sugerencias de mejora eligen el siguiente paso lógico por encima de tu componente actual y lo filtran para que combine bien con tu otro componente — nunca recomendamos saltar varios niveles a la vez. La ganancia estimada de FPS se calcula simulando tu sistema con el componente mejorado. El rendimiento real depende de tu sistema completo, pero la clasificación relativa es un indicador fiable.'
+        },
+        {
           id: 'laptop',
           question: '¿Funcionarán estos juegos en mi portátil?',
           answer: 'Si tu portátil tiene una GPU dedicada, puedes buscarla en nuestra base de datos. Selecciona la GPU y CPU de tu portátil en la Calculadora FPS para obtener estimaciones. Las GPUs de portátiles generalmente rinden un poco por debajo de sus contrapartes de escritorio debido a limitaciones térmicas y de energía.'
-        },
-        {
-          id: 'updates',
-          question: '¿Con qué frecuencia se actualizan los datos?',
-          answer: 'Se añaden nuevas GPUs, CPUs y juegos regularmente. Los datos de rendimiento de juegos se actualizan para reflejar parches y mejoras de controladores. Vuelve a menudo para ver las últimas novedades.'
         }
       ]
     },
@@ -1913,6 +1974,497 @@ export const translations = {
     language: {
       switchTo: 'Cambiar a {language}',
       current: 'Idioma actual: {language}'
+    }
+  },
+
+  pt: {
+    site: {
+      name: 'RunFps',
+      tagline: 'Veja quantos FPS seu PC faz em qualquer jogo',
+      description: 'Calculadora gratuita de desempenho para jogos e analisador de gargalo. Teste de FPS rápido, sem cadastro.'
+    },
+    nav: {
+      calculator: 'Calculadora',
+      optimizer: 'Otimizador',
+      bottleneck: 'Gargalo',
+      benchmarks: 'Benchmarks',
+      games: 'Jogos',
+      compare: 'Comparar',
+      faq: 'FAQ',
+      about: 'Sobre',
+      contact: 'Contato',
+      privacy: 'Privacidade',
+      terms: 'Termos',
+      openMenu: 'Abrir menu',
+      closeMenu: 'Fechar menu',
+      navigate: 'Navegação',
+      fpsCalculator: 'Calculadora de FPS',
+      settingsOptimizer: 'Otimizador de Configurações'
+    },
+    footer: {
+      tools: 'Ferramentas',
+      benchmarks: 'Benchmarks',
+      company: 'RunFps',
+      fpsCalculator: 'Calculadora de FPS',
+      compare: 'Comparar',
+      settingsOptimizer: 'Otimizador',
+      bottleneckCalculator: 'Calculadora de Gargalo',
+      gpuBenchmarks: 'Benchmarks de GPU',
+      cpuBenchmarks: 'Benchmarks de CPU',
+      gamesLibrary: 'Biblioteca de Jogos',
+      faq: 'FAQ',
+      about: 'Sobre',
+      privacyPolicy: 'Política de Privacidade',
+      termsOfService: 'Termos de Uso',
+      contactUs: 'Fale Conosco',
+      disclaimer: '&copy; {year} RunFps. Nomes, logos e imagens de jogos são marcas de seus respectivos proprietários. RunFps não é afiliado a nenhuma publicadora ou fabricante. Estimativas de FPS são aproximadas — desempenho real varia por sistema.',
+      language: 'Idioma'
+    },
+    home: {
+      title: 'Veja quantos FPS seu PC faz em qualquer jogo',
+      description: 'Veja como seu PC roda {games} jogos. Escolha GPU e CPU, receba estimativa instantânea de FPS, descubra gargalos e otimize configurações. Grátis, sem cadastro.',
+      popularGames: 'Jogos Populares',
+      viewAll: 'Ver todos {count}',
+      howItWorks: 'Como funciona',
+      step1: 'Escolha as peças',
+      step2: 'Veja seu FPS',
+      step3: 'Encontre gargalos',
+      step4: 'Otimize e jogue',
+      midRange: 'PC intermediário',
+      heroTitle: 'Veja seu FPS',
+      heroSubtitle: 'Veja como seu PC roda qualquer jogo. Grátis, sem cadastro.',
+      gamesCount: '{count} jogos',
+      gpusCount: '{count} GPUs',
+      cpusCount: '{count} CPUs',
+      settingsCount: '{count} configs',
+      heroLine1: 'Saiba seu',
+      heroLine2: 'Otimize suas configs.',
+      heroLine3: 'Domine em ',
+      heroSrGame: 'seu jogo',
+      heroDesc: 'Veja como seu PC roda em {games} jogos. Escolha GPU e CPU e te diremos exatamente quantos FPS você terá — e o que ajustar para mais.',
+      tweakButton: 'Otimizar para mais FPS',
+      heroFree: 'Grátis. Sem cadastro. Tudo incluso.',
+      featureCalcTitle: 'Calculadora de FPS',
+      featureCalcDesc: 'Escolha GPU, CPU e jogo. Diremos quantos FPS você terá em qualquer resolução e qualidade.',
+      featureOptTitle: 'Otimizador de Configurações',
+      featureOptDesc: 'Diga seu FPS alvo. Mostramos exatamente quais configs ajustar — sem chute.',
+      featureBottleneckTitle: 'Calculadora de Gargalo',
+      featureBottleneckDesc: 'Sua CPU ou GPU está te segurando? Verificamos no seu jogo exato. Sem enrolação.',
+      featureGamesTitle: 'Biblioteca de Jogos',
+      featureGamesDesc: 'Navegue por gênero. Veja FPS estimado para qualquer hardware e dicas de otimização.',
+      featureBenchTitle: 'Benchmarks de GPU e CPU',
+      featureBenchDesc: 'Veja onde seu hardware está. GPUs e CPUs ranqueadas por desempenho real em jogos.',
+      featureCompTitle: 'Comparador',
+      featureCompDesc: 'Coloque duas GPUs ou CPUs lado a lado. Compare ficha, benchmark e FPS nos seus jogos.'
+    },
+    calculator: {
+      title: 'Calculadora de FPS - Teste o Desempenho do seu PC Gamer',
+      description: 'Selecione GPU, CPU, RAM e jogo para ter estimativa instantânea de FPS em qualquer resolução e preset. Grátis, sem cadastro.',
+      heading: 'Calculadora de FPS',
+      subtitle: 'Escolha seu hardware e jogo para estimar FPS.',
+      full: 'Completo',
+      quick: 'Rápido',
+      gpu: 'GPU',
+      cpu: 'CPU',
+      game: 'Jogo',
+      ram: 'RAM',
+      type: 'Tipo',
+      resolution: 'Resolução',
+      preset: 'Preset',
+      searchGpu: 'Buscar GPU...',
+      searchCpu: 'Buscar CPU...',
+      searchGame: 'Buscar jogo...',
+      selectGpu: 'Selecionar GPU',
+      selectCpu: 'Selecionar CPU',
+      selectGame: 'Selecionar jogo',
+      advanced: 'Opções Avançadas',
+      rayTracing: 'Ray Tracing',
+      upscaling: 'Upscaling',
+      frameCap: 'Limite de FPS',
+      storage: 'Armazenamento',
+      operatingSystem: 'Sistema Operacional',
+      calculate: 'Calcular FPS',
+      placeholder: 'Selecione hardware e jogo e clique em Calcular.',
+      noCpuGame: 'Selecione CPU e jogo.',
+      noGpu: '{cpu} não tem vídeo integrado. Selecione uma GPU.',
+      averageFps: 'FPS MÉDIO',
+      cappedAt: 'LIMITADO A {fps} FPS',
+      cpuUtil: 'Uso CPU / GPU',
+      bottleneck: 'Gargalo: {bottleneck} ({percent}%)',
+      fpsByPreset: 'FPS por Preset',
+      fpsByResolution: 'FPS por Resolução',
+      upgradePath: 'Caminho de Upgrade',
+      upgradeGpu: 'Upgrade de GPU',
+      upgradeCpu: 'Upgrade de CPU',
+      topTierCpu: 'Você já tem CPU top de linha.',
+      topTierGpu: 'Você já tem GPU top de linha.',
+      tips: 'Dicas',
+      noTips: 'Seu sistema está equilibrado para este jogo. Aproveite!',
+      tipCpu: 'Sua CPU ({cpu}) está limitando sua GPU ({gpu}) em {percent}%. Considere upgrade de CPU.',
+      tipGpu: 'Sua GPU ({gpu}) é o limite principal. Upgrade de GPU daria o maior ganho.',
+      tipRt: 'Este jogo suporta ray tracing. Ative se tiver folga, mas espere perda de 20-25% de FPS.',
+      tipUpscaling: 'Este jogo suporta DLSS/FSR. Ativar upscaling pode dar 15-30% mais FPS.',
+      tipFrameCap: 'Seu sistema passa do limite de {fps} FPS. Remova o limite se seu monitor suporta mais Hz.',
+      low: 'Baixo',
+      medium: 'Médio',
+      high: 'Alto',
+      ultra: 'Ultra',
+      on: 'Ligado',
+      off: 'Desligado',
+      none: 'Nenhum',
+      osWindows10: 'Windows 10',
+      osWindows11: 'Windows 11',
+      osLinux: 'Linux (Proton)',
+      rating: 'Avaliação'
+    },
+    optimizer: {
+      title: 'Otimizador de Configurações - Alcance seu FPS Alvo',
+      description: 'Defina FPS alvo e receba guia passo a passo para alcançá-lo com mínima perda visual.',
+      heading: 'Otimizador de Configurações',
+      subtitle: 'Defina FPS alvo e encontre as melhores mudanças.',
+      gpu: 'GPU',
+      cpu: 'CPU',
+      game: 'Jogo',
+      targetFps: 'FPS Alvo',
+      custom: 'Personalizado',
+      customTarget: 'FPS Alvo Personalizado',
+      optimize: 'Otimizar',
+      currentFps: 'FPS ATUAL',
+      targetFpsLabel: 'FPS ALVO',
+      recommendedChanges: 'Mudanças Recomendadas',
+      projectedFps: 'FPS Projetado',
+      searchGpu: 'Buscar GPU...',
+      searchCpu: 'Buscar CPU...',
+      searchGame: 'Buscar jogo...',
+      selectGpu: 'Selecionar GPU',
+      selectCpu: 'Selecionar CPU',
+      selectGame: 'Selecionar jogo',
+      setting: 'Configuração',
+      change: 'Mudança',
+      fpsGain: 'Ganho de FPS',
+      noChanges: 'Seu sistema já atinge a meta. Aproveite!',
+      emptyState: 'Selecione GPU, CPU e jogo para otimizar.',
+      cannotReach: 'Não dá para atingir a meta com este hardware.'
+    },
+    bottleneck: {
+      title: 'Calculadora de Gargalo - Descubra seu Gargalo de CPU ou GPU',
+      description: 'Descubra se CPU ou GPU está segurando seu desempenho em jogos. Análise específica por jogo.',
+      heading: 'Calculadora de Gargalo',
+      subtitle: 'Veja se CPU ou GPU está limitando nos jogos.',
+      cpu: 'CPU',
+      gpu: 'GPU',
+      game: 'Jogo',
+      resolution: 'Resolução',
+      analyze: 'Analisar',
+      bottleneckAt: 'GARGALO EM {resolution}',
+      utilizationBalance: 'Balanço de Uso',
+      fpsEstimate: 'Estimativa de FPS',
+      searchCpu: 'Buscar CPU...',
+      searchGpu: 'Buscar GPU...',
+      searchGame: 'Buscar jogo...',
+      selectCpu: 'Selecionar CPU',
+      selectGpu: 'Selecionar GPU',
+      selectGame: 'Selecionar jogo',
+      emptyState: 'Selecione CPU, GPU e jogo para analisar.'
+    },
+    compare: {
+      title: 'Comparar GPU e CPU - Lado a Lado',
+      description: 'Compare duas GPUs ou CPUs com ficha, notas e FPS em jogos populares.',
+      heading: 'Comparação de Hardware',
+      subtitle: 'Compare duas GPUs ou CPUs lado a lado.',
+      gpuVsGpu: 'GPU vs GPU',
+      cpuVsCpu: 'CPU vs CPU',
+      gpu1: 'GPU 1',
+      gpu2: 'GPU 2',
+      cpu1: 'CPU 1',
+      cpu2: 'CPU 2',
+      selectGpu: 'Selecionar GPU 1',
+      selectGpu2: 'Selecionar GPU 2',
+      selectCpu: 'Selecionar CPU 1',
+      selectCpu2: 'Selecionar CPU 2',
+      close: 'Fechar',
+      specs: 'Ficha',
+      games: 'Jogos',
+      score: 'Nota',
+      fpsComparison: 'Comparativo de FPS',
+      noSelection: 'Selecione hardware para comparar.',
+      sameItem: 'Você selecionou o mesmo item. Escolha outro.',
+      performance: 'Desempenho',
+      vram: 'VRAM',
+      tdp: 'TDP',
+      launchYear: 'Ano de Lançamento',
+      tier: 'Tier',
+      cores: 'Núcleos',
+      threads: 'Threads'
+    },
+    benchmarks: {
+      gpu: {
+        title: 'Benchmarks de GPU - Ranking de Desempenho',
+        description: 'Compare {count} GPUs ranqueadas por desempenho em jogos.',
+        heading: 'Benchmarks de GPU',
+        subtitle: 'Veja como {count} GPUs se saem em jogos — notas, ficha e para que cada placa é melhor.',
+        allBrands: 'Todas',
+        allTiers: 'Todos Tiers',
+        search: 'Buscar GPUs...',
+        sortScoreDesc: 'Nota (Maior primeiro)',
+        sortScoreAsc: 'Nota (Menor primeiro)',
+        sortVramDesc: 'VRAM (Maior)',
+        sortTdpAsc: 'TDP (Menor)',
+        sortYearDesc: 'Ano (Mais novos)',
+        sortNameAsc: 'Nome (A-Z)',
+        count: '{count} GPUs',
+        countOf: '{filtered} de {total} GPUs',
+        showMore: 'Mostrar mais',
+        performanceScore: 'Nota de Desempenho',
+        vram: 'VRAM',
+        tdp: 'TDP',
+        launchYear: 'Ano',
+        tier: 'Tier',
+        bestFor: 'Melhor para {res}',
+        bestForEsports: 'Melhor para esports'
+      },
+      cpu: {
+        title: 'Benchmarks de CPU - Ranking de Desempenho',
+        description: 'Compare CPUs ranqueadas por desempenho em jogos.',
+        heading: 'Benchmarks de CPU',
+        subtitle: 'Veja como {count} CPUs se saem — notas, ficha e desempenho real.',
+        allBrands: 'Todas',
+        allTiers: 'Todos Tiers',
+        search: 'Buscar CPUs...',
+        sortScoreDesc: 'Nota (Maior primeiro)',
+        sortScoreAsc: 'Nota (Menor primeiro)',
+        sortCoresDesc: 'Núcleos (Mais)',
+        sortTdpAsc: 'TDP (Menor)',
+        sortYearDesc: 'Ano (Mais novos)',
+        sortNameAsc: 'Nome (A-Z)',
+        count: '{count} CPUs',
+        countOf: '{filtered} de {total} CPUs',
+        showMore: 'Mostrar mais',
+        performanceScore: 'Nota de Desempenho',
+        coresThreads: 'Núcleos / Threads',
+        tdp: 'TDP',
+        launchYear: 'Ano',
+        tier: 'Tier'
+      }
+    },
+    games: {
+      index: {
+        title: 'Biblioteca de Jogos - {count} Jogos com FPS e Requisitos',
+        description: 'Navegue por {count} jogos. Veja FPS estimado, requisitos, compatibilidade Steam Deck e desempenho por tier.',
+        heading: 'Biblioteca de Jogos',
+        subtitle: 'Veja FPS estimado e requisitos para {count} jogos.',
+        search: 'Buscar jogos...',
+        all: 'Todos',
+        count: '{count} jogos',
+        countOf: '{filtered} de {total} jogos',
+        showMore: 'Mostrar mais',
+        noResults: 'Nenhum jogo encontrado.',
+        steamDeck: 'SD',
+        fps: 'FPS',
+        midRangePc: 'PC intermediário'
+      },
+      detail: {
+        title: '{game} - Estimativa de FPS e Requisitos',
+        description: 'Veja FPS estimado para {game} em 5 tiers em 1080p e 1440p. Requisitos: {ram}GB RAM, {vram}GB VRAM.',
+        fpsEstimates: 'Estimativas de FPS',
+        estimatedFps: 'Frames por segundo estimados por preset',
+        tier: 'Tier',
+        hardware: 'Hardware',
+        low: 'Baixo',
+        med: 'Méd',
+        high: 'Alto',
+        ultra: 'Ultra',
+        budget: 'Básico',
+        mid: 'Intermediário',
+        enthusiast: 'Entusiasta',
+        systemRequirements: 'Requisitos do Sistema',
+        ram: 'RAM',
+        vram: 'VRAM',
+        storage: 'Armazenamento',
+        genre: 'Gênero',
+        developer: 'Desenvolvedora',
+        releaseYear: 'Ano de Lançamento',
+        steamDeck: 'Verificado no Steam Deck'
+      }
+    },
+    about: {
+      title: 'Sobre o RunFps - Ferramenta Gratuita para PC Gamer',
+      description: 'RunFps é ferramenta gratuita e privada para desempenho em jogos. Sem cadastro, sem rastreio — só FPS real e comparativos.',
+      heading: 'Sobre o RunFps',
+      tagline: 'Grátis. Rápido. Privado. Feito para quem quer números reais.',
+      intro: 'Criamos o RunFps para responder rápido: meu PC roda bem este jogo? Tudo calcula no seu navegador. Sem cadastro, sem download e seus dados nunca saem do seu aparelho.',
+      whatWeOffer: 'O que você tem',
+      privacyFirst: 'Privado por design',
+      builtForGamers: 'Feito para setup real',
+      privacyText: 'Seu hardware fica no seu aparelho. Sem analytics, sem contas, sem rastreio. Mais em {privacy}.',
+      builtForGamersText: 'Montando PC novo, espremendo mais FPS do atual ou só conferindo antes de comprar — o RunFps te dá números diretos para decidir.',
+      privacyLink: 'Política de Privacidade',
+      regularUpdates: 'Atualizado todo mês',
+      regularUpdatesText: 'Adicionamos GPUs, CPUs e jogos todo mês — não uma vez por ano. Curvas e notas são revisadas quando patches ou drivers mudam desempenho real. Última atualização: agosto de 2026. Próxima: setembro de 2026.'
+    },
+    methodology: {
+      title: 'Metodologia - Como o RunFps Calcula FPS',
+      description: 'Entenda como o RunFps estima FPS: notas, interpolação Catmull-Rom, curvas e limitações. Metodologia transparente.',
+      heading: 'Metodologia',
+      tagline: 'Como estimamos — e os limites.',
+      intro: 'O RunFps estima FPS sem enviar seus dados. Tudo roda no seu navegador usando três entradas: GPU, CPU e curva do jogo.',
+      scores: 'Notas',
+      scoresText: 'Cada GPU e CPU tem nota 0–100 baseada em desempenho real em 1080p (média de benchmarks públicos, reviews e dados agregados). Notas normalizadas: 100 ≈ RTX 5090 / Core Ultra 9, 65 ≈ tier básico. Notas não são lineares — refletem FPS real, não sintético.',
+      curves: 'Curvas dos Jogos',
+      curvesText: 'Cada jogo tem performanceCurve mapeando notas de GPU para FPS em 1080p/High em sistema referência (ex: 5 pontos: {points}). Pontos desconhecidos são interpolados com splines Catmull-Rom via engine.js, dando estimativas suaves. Influência de CPU, RAM/VRAM e multiplicadores de preset são aplicados depois.',
+      pipeline: 'Pipeline de Cálculo',
+      pipelineText: 'FPS = interpolate(nota GPU → curva) × limitador CPU × fator RAM/VRAM × fator resolução × fator preset (Baixo 1.4×, Médio 1.15×, Alto 1.0×, Ultra 0.7×). Gargalo % = folga relativa GPU vs CPU na resolução escolhida. Otimizador percorre tabela settingsImpact para sugerir mudanças visuais mais baratas para atingir sua meta.',
+      limitations: 'Limitações',
+      limitationsText: 'Estimativas são ±10–15%. Drivers, térmicas, apps em segundo plano, limite de energia de notebooks e patches mudam FPS real. Curvas são aproximações ajustadas manualmente, não medição por placa. Use para comparar hardware relativamente — não como garantia de compra.',
+      updates: 'Atualizações',
+      updatesText: 'Notas e curvas são atualizadas mensalmente quando hardware novo lança e patches mudam desempenho. Revisamos GPUs, CPUs e jogos todo mês. Dúvidas? Fale em {email}.'
+    },
+    contact: {
+      title: 'Fale Conosco - RunFps',
+      description: 'Fale com quem faz o RunFps — bugs, pedidos de jogos ou feedback.',
+      heading: 'Contato',
+      tagline: 'Caixa real. Lemos cada e-mail.',
+      intro: 'Faltou GPU, jogo estranho ou achou bug? Diga o que aconteceu e qual navegador usa. Respondemos em 2 a 3 dias.',
+      email: 'E-mail',
+      emailText: '{email} — sim, humano lê.',
+      reportBug: 'Reportar bug',
+      bugText: 'Inclua navegador, aparelho e onde clicou. Print ajuda a corrigir mais rápido.',
+      suggestFeature: 'Pedir algo',
+      featureText: 'Quer jogo, GPU ou recurso novo? Mantemos lista e lançamos o que o pessoal mais pede.',
+      partnerships: 'Parcerias',
+      partnershipsText: 'Para outros assuntos, use o mesmo e-mail.'
+    },
+    privacy: {
+      title: 'Política de Privacidade',
+      description: 'Política de privacidade RunFps — não coletamos dados pessoais. Tudo roda no seu navegador.',
+      heading: 'Política de Privacidade',
+      lastUpdated: 'Última atualização: julho de 2026',
+      intro: 'Não coletamos dados pessoais. Todos cálculos, análises e otimizações rodam totalmente no seu navegador. Nada é enviado aos nossos servidores.',
+      thirdParty: 'Serviços de Terceiros e Cookies',
+      thirdPartyText: 'Usamos Google AdSense para exibir anúncios (aprovação pendente). Google, como fornecedor terceiro, usa cookies — incluindo DoubleClick DART — para exibir anúncios baseados em visitas anteriores a este e outros sites. Você pode desativar personalização em https://www.google.com/settings/ads e https://www.aboutads.info/choices, e saber mais em https://policies.google.com/technologies/ads. Até anúncios ativarem, nenhum cookie publicitário é definido.',
+      local: 'Armazenamento Local',
+      localText: 'Usamos localStorage só para lembrar preferência de tema escuro. Fica no seu aparelho.',
+      noTracking: 'Sem Rastreio',
+      noTrackingText: 'Sem analytics, sem pixels, sem fingerprint. O único código terceiro futuro será AdSense após aprovação — atualmente nenhum cookie de anúncio é definido.',
+      noAccounts: 'Sem Contas',
+      noAccountsText: 'Não há cadastro nem nada para deletar. Não guardamos nada sobre você.',
+      questions: 'Dúvidas? E-mail {email}.'
+    },
+    terms: {
+      title: 'Termos de Uso',
+      description: 'Termos de uso RunFps — ao usar o site você concorda.',
+      heading: 'Termos de Uso',
+      lastUpdated: 'Última atualização: julho de 2026',
+      intro: 'Ao usar o RunFps, você concorda com os termos abaixo. Se não concorda, não use o site.',
+      noGuarantee: 'Sem Garantia de Precisão',
+      noGuaranteeText: 'Todas estimativas de FPS são aproximadas. Desempenho real varia por configuração, drivers e outros fatores. Não use como única base para compra.',
+      useAtOwnRisk: 'Uso por sua Conta e Risco',
+      riskText: 'Site fornecido "como está" sem garantia. Não somos responsáveis por decisões tomadas com base nesses dados.',
+      trademarks: 'Marcas',
+      trademarksText: 'Todos nomes de jogos e hardwares são marcas de seus proprietários. RunFps não é afiliado a publicadoras ou fabricantes.',
+      changes: 'Mudanças',
+      changesText: 'Podemos atualizar estes termos. Mudanças serão publicadas aqui com data atualizada.',
+      contact: 'Contato',
+      contactText: 'Dúvidas, feedback ou bug? E-mail em {email}. Lemos tudo.'
+    },
+    faq: {
+      title: 'FAQ - Perguntas Frequentes',
+      description: 'Respostas sobre estimativas de FPS, cálculos e recursos do RunFps. Calculadora de FPS, gargalo e mais.',
+      heading: 'FAQ',
+      tagline: 'Respostas para dúvidas comuns.',
+      items: [
+        {
+          id: 'how-to-calculate',
+          question: 'Como calcular FPS?',
+          answer: 'FPS = quadros renderizados / segundos, ou 1000 / tempo de quadro em ms. Para estimativas, o RunFps combina notas de benchmark de GPU e CPU (0-100) com a curva de desempenho do jogo, mais RAM, resolução e qualidade para prever FPS. Para FPS real, use overlay no jogo ou a Calculadora de FPS do RunFps.'
+        },
+        {
+          id: 'increase-fps',
+          question: 'Como aumentar meu FPS?',
+          answer: 'Use o Otimizador de Configurações do RunFps para mirar seu FPS alvo, depois: reduza resolução e qualidade, atualize drivers da GPU, ative XMP/DOCP da RAM, feche apps em segundo plano e overlays, limpe térmicas e faça upgrade da peça com gargalo (veja a Calculadora de Gargalo). Pequenos ajustes já dão 20-40% mais FPS.'
+        },
+        {
+          id: 'fix-low-fps',
+          question: 'Como corrigir FPS baixo?',
+          answer: 'Atualize drivers da GPU, reduza configurações gráficas e resolução, feche processos em segundo plano, verifique temperatura de CPU/GPU por throttling, rode a Calculadora de Gargalo para achar o limitador, garanta RAM em dual-channel e faça varredura de malware. Se continuar baixo, upgrade de GPU ou CPU dá o maior ganho.'
+        },
+        {
+          id: '60-vs-120',
+          question: '60 FPS é bom ou 120 FPS?',
+          answer: '60 FPS é fluido e bom para a maioria dos jogos. 120 FPS é visivelmente mais liso com menos input lag, ideal para jogos competitivos em monitor 120/144Hz+. Acima da taxa de atualização do seu monitor o ganho diminui — combine FPS com seu display.'
+        },
+        {
+          id: 'one-frame-60fps',
+          question: 'Quanto vale 1 quadro em 60 FPS?',
+          answer: 'Em 60 FPS, 1 quadro = 16,67 ms (1000 ms / 60). Em 120 FPS são 8,33 ms e em 30 FPS 33,33 ms. Menor tempo de quadro significa movimento mais fluido e menos atraso.'
+        },
+        {
+          id: 'accuracy',
+          question: 'Qual a precisão das estimativas de FPS?',
+          answer: 'Estimativas de FPS são baseadas em notas de benchmark de GPU e CPU interpoladas com dados reais de jogos. FPS real pode variar ±10-15% dependendo de configuração, drivers, apps em segundo plano e outros fatores. Use como guia geral, não previsão exata.'
+        },
+        {
+          id: 'calculation',
+          question: 'Como funciona o cálculo de FPS?',
+          answer: 'Cada GPU e CPU tem nota 0-100. Cada jogo tem curva de desempenho mapeando notas de GPU para FPS. Combinamos isso com sua nota de CPU, RAM, resolução, preset e outros ajustes para estimar FPS. Tudo calcula local no seu navegador — nada é enviado.'
+        },
+        {
+          id: 'can-it-run',
+          question: 'Meu PC roda este jogo?',
+          answer: 'Use a Calculadora de FPS — selecione GPU, CPU e jogo para ver FPS estimado em presets e resoluções diferentes. Veja também a Biblioteca de Jogos para estimativas por tier de hardware.'
+        },
+        {
+          id: 'system-reqs',
+          question: 'Quais são os requisitos do sistema?',
+          answer: 'Cada página de jogo na Biblioteca inclui requisitos de RAM, VRAM e armazenamento. Veja também FPS estimado de PC básico até ultra para saber exatamente o que esperar.'
+        },
+        {
+          id: 'comparison',
+          question: 'Como vocês comparam GPUs e CPUs?',
+          answer: 'Hardware é ranqueado por nota composta 0-100 baseada em desempenho real em jogos. Compare ficha lado a lado e veja diferença estimada de FPS em jogos populares.'
+        },
+        {
+          id: 'upgrades',
+          question: 'Posso confiar nas sugestões de upgrade?',
+          answer: 'Sugestões escolhem o próximo passo lógico acima da sua peça atual e filtram para combinar bem com o outro componente — nunca pulamos vários tiers. Ganho estimado é simulado com a peça nova. Desempenho real depende do sistema todo, mas ranking relativo é confiável.'
+        },
+        {
+          id: 'laptop',
+          question: 'Meu notebook roda esses jogos?',
+          answer: 'Se seu notebook tem GPU dedicada, busque na nossa base. Selecione GPU e CPU do notebook na Calculadora de FPS para estimar. GPUs de notebook rendem um pouco abaixo das de desktop por limite térmico e de energia.'
+        }
+      ]
+    },
+    notFound: {
+      title: 'Página Não Encontrada',
+      description: 'Página não existe. Veja seu FPS, compare hardware ou navegue nos jogos.',
+      heading: '404',
+      text: 'Esta página não existe.',
+      goHome: 'Ir ao Início',
+      checkFps: 'Ver meu FPS'
+    },
+    misc: {
+      skipToContent: 'Pular para o conteúdo',
+      scrollToTop: 'Voltar ao topo',
+      search: 'Buscar',
+      sort: 'Ordenar',
+      loading: 'Carregando...',
+      error: 'Algo deu errado.',
+      noResults: 'Sem resultados.',
+      fps: 'FPS',
+      score: 'Nota',
+      brand: 'Marca',
+      generation: 'Geração',
+      estimatedFps: 'FPS Estimado',
+      toggleDarkMode: 'Alternar tema escuro',
+      switchLanguage: 'Trocar idioma',
+      adblockNotice: 'Entendemos. Mas anúncios mantêm o site grátis e não te rastreamos. Se curtiu, considere liberar.',
+      adblockThanks: 'Obrigado.',
+      adblockDismiss: 'Entendi'
+    },
+    language: {
+      switchTo: 'Mudar para {language}',
+      current: 'Idioma atual: {language}'
     }
   }
 };
