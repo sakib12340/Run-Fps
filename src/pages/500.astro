@@ -8,7 +8,8 @@ import { Icon } from 'astro-icon/components';
   en: { heading: '500', text: 'Something went wrong on our end.', retry: 'Try Again', home: 'Go Home' },
   de: { heading: '500', text: 'Auf unserer Seite ist ein Fehler aufgetreten.', retry: 'Erneut versuchen', home: 'Zur Startseite' },
   fr: { heading: '500', text: 'Une erreur est survenue de notre côté.', retry: 'Réessayer', home: 'Accueil' },
-  es: { heading: '500', text: 'Algo salió mal en nuestro lado.', retry: 'Intentar de nuevo', home: 'Ir al inicio' }
+  es: { heading: '500', text: 'Algo salió mal en nuestro lado.', retry: 'Intentar de nuevo', home: 'Ir al inicio' },
+  pt: { heading: '500', text: 'Algo deu errado do nosso lado.', retry: 'Tentar novamente', home: 'Ir ao Início' }
 })}></script>
   <div class="flex flex-col items-center justify-center py-16 sm:py-24 text-center">
     <div class="w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center mb-4">
@@ -28,7 +29,7 @@ import { Icon } from 'astro-icon/components';
     try { i18n = JSON.parse(document.getElementById('error-i18n')!.textContent); } catch(e) { return; }
     var path = window.location.pathname;
     var seg = path.split('/').filter(Boolean);
-    var locale = seg.length > 0 && ['en','de','fr','es'].includes(seg[0]) ? seg[0] : 'en';
+    var locale = seg.length > 0 && ['en','de','fr','es','pt'].includes(seg[0]) ? seg[0] : 'en';
     var t = i18n[locale] || i18n.en;
     var text = document.getElementById('err-text');
     var retry = document.getElementById('err-retry');

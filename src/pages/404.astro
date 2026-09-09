@@ -34,7 +34,12 @@ const allLocales = locales;
     try { i18n = JSON.parse(document.getElementById('notfound-i18n')!.textContent); } catch(e) { return; }
     var path = window.location.pathname;
     var seg = path.split('/').filter(Boolean);
-    var locale = seg.length > 0 && ['en','de','fr','es'].includes(seg[0]) ? seg[0] : 'en';
+    var availableLocales = ['en','de','fr','es','pt'];
+    try {
+      var embedded = JSON.parse(document.getElementById('notfound-locales')!.textContent);
+      if (Array.isArray(embedded) && embedded.length > 0) availableLocales = embedded;
+    } catch(e) {}
+    var locale = seg.length > 0 && availableLocales.includes(seg[0]) ? seg[0] : 'en';
     var t = i18n[locale] || i18n.en;
     var heading = document.getElementById('nf-heading');
     var text = document.getElementById('nf-text');
@@ -46,7 +51,7 @@ const allLocales = locales;
     if (homeLink) { homeLink.textContent = t.goHome; homeLink.href = '/' + locale + '/'; }
     if (fpsLink) { fpsLink.textContent = t.checkFps; fpsLink.href = '/' + locale + '/calculator'; }
     if (langLabel) {
-      var labels = { en: 'Also available in:', de: 'Auch verfügbar auf:', fr: 'Aussi disponible en:', es: 'También disponible en:' };
+      var labels = { en: 'Also available in:', de: 'Auch verfügbar auf:', fr: 'Aussi disponible en:', es: 'También disponible en:', pt: 'Também disponível em:' };
       langLabel.textContent = labels[locale as keyof typeof labels] || labels.en;
     }
   })();
