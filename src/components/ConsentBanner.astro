@@ -1,0 +1,63 @@
+---
+export interface Props {
+  currentLocale: string;
+}
+
+const { currentLocale } = Astro.props;
+const locale = ['en', 'de', 'fr', 'es', 'pt'].includes(currentLocale) ? currentLocale : 'en';
+
+const copy: Record<string, { text: string; accept: string; decline: string; privacy: string }> = {
+  en: { text: 'We use cookies for anonymous visit statistics (Google Analytics). Your choice is saved on your device.', accept: 'Accept', decline: 'Decline', privacy: 'Privacy Policy' },
+  de: { text: 'Wir nutzen Cookies für anonyme Besuchsstatistiken (Google Analytics). Deine Wahl wird auf deinem Gerät gespeichert.', accept: 'Akzeptieren', decline: 'Ablehnen', privacy: 'Datenschutz' },
+  fr: { text: 'Nous utilisons des cookies pour des statistiques de visite anonymes (Google Analytics). Ton choix est enregistré sur ton appareil.', accept: 'Accepter', decline: 'Refuser', privacy: 'Confidentialité' },
+  es: { text: 'Usamos cookies para estadísticas anónimas de visitas (Google Analytics). Tu elección se guarda en tu dispositivo.', accept: 'Aceptar', decline: 'Rechazar', privacy: 'Privacidad' },
+  pt: { text: 'Usamos cookies para estatísticas anônimas de visitas (Google Analytics). Tua escolha fica guardada no teu aparelho.', accept: 'Aceitar', decline: 'Recusar', privacy: 'Privacidade' }
+};
+
+const c = copy[locale];
+const privacyHref = `/${locale}/privacy`;
+---
+
+<div id="consent-banner" hidden class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-50 bg-paper dark:bg-dark-paper border border-hairline dark:border-dark-hairline rounded-lg shadow-lg p-4">
+  <p class="text-xs text-ink dark:text-dark-ink leading-relaxed m-0">{c.text} <a href={privacyHref} class="underline underline-offset-2">{c.privacy}</a></p>
+  <div class="mt-3 flex items-center gap-2">
+    <button id="consent-accept" class="px-4 py-1.5 bg-ink dark:bg-dark-ink text-paper dark:text-dark-canvas rounded-pill text-xs font-medium cursor-pointer border-0">{c.accept}</button>
+    <button id="consent-decline" class="px-4 py-1.5 bg-transparent text-mid-gray dark:text-dark-mid-gray rounded-pill text-xs font-medium cursor-pointer border border-hairline dark:border-dark-hairline">{c.decline}</button>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  var KEY = 'runfps-consent';
+  function applyChoice(value) {
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          ad_storage: value,
+          ad_user_data: value,
+          ad_personalization: value,
+          analytics_storage: value
+        });
+      }
+    } catch (e) {}
+  }
+  var banner = document.getElementById('consent-banner');
+  if (!banner) return;
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') {
+    applyChoice(stored);
+    return;
+  }
+  banner.hidden = false;
+  function choose(value) {
+    try { localStorage.setItem(KEY, value); } catch (e) {}
+    applyChoice(value);
+    banner.hidden = true;
+  }
+  var acceptBtn = document.getElementById('consent-accept');
+  var declineBtn = document.getElementById('consent-decline');
+  if (acceptBtn) acceptBtn.addEventListener('click', function() { choose('granted'); });
+  if (declineBtn) declineBtn.addEventListener('click', function() { choose('denied'); });
+})();
+</script>
