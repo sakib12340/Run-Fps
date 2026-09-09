@@ -1,4 +1,4 @@
-const CACHE_NAME = 'runfps-v9';
+const CACHE_NAME = 'runfps-v10';
 
 const PRECACHE_URLS = [
   '/en/',
@@ -92,6 +92,13 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
+
+  // Never intercept cross-origin requests (Google tags, analytics beacons,
+  // Cloudflare insights). Let them go straight to the network so the
+  // service worker can neither block them nor serve stale copies.
+  if (url.origin !== self.location.origin) {
+    return;
+  }
 
   // Network-first for HTML navigations — always get fresh pages
   if (event.request.mode === 'navigate') {
