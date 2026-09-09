@@ -1,5 +1,5 @@
 # Security Contact
-Contact: mailto:runfps40@gmail.com
+Contact: mailto:hello@runfps.com
 
 # Preferred Languages
 Preferred-Languages: en
