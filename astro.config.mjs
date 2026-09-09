@@ -33,6 +33,15 @@ export default defineConfig({
     icon(),
     sitemap({
       filter: (page) => page !== 'https://runfps.com/' && page !== 'https://runfps.com',
+      lastmod: new Date(),
+      serialize(item) {
+        const links = item.links ?? [];
+        if (!links.some((l) => l.lang === 'x-default')) {
+          const en = links.find((l) => l.lang === 'en');
+          links.push({ lang: 'x-default', url: en?.url ?? item.url });
+        }
+        return { ...item, links };
+      },
       i18n: {
         defaultLocale: 'en',
         locales: {
