@@ -23,9 +23,20 @@ const relatedGames = (post.games ?? [])
   .filter(Boolean)
   .slice(0, 4);
 const relatedPosts = blogData.posts.filter(p => p.slug !== post.slug).slice(0, 2);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.description,
+  "datePublished": post.date,
+  "author": { "@type": "Organization", "name": "RunFps", "url": "https://runfps.com" },
+  "mainEntityOfPage": `https://runfps.com/${locale}/blog/${post.slug}/`
+};
 ---
 
 <Layout title={post.title} description={post.description}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
   <div class="max-w-2xl mx-auto space-y-6">
     <nav aria-label="Breadcrumb">
       <ol class="flex items-center gap-1.5 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">

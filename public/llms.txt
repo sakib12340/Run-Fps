@@ -1,0 +1,26 @@
+# RunFps
+
+> Free PC gaming performance calculator and bottleneck analyzer. Check estimated FPS for any GPU, CPU, and game combination. All FPS figures are calculated estimates, not measured benchmarks.
+
+## Tools
+
+- [FPS Calculator](https://runfps.com/en/calculator): pick a GPU, CPU, RAM, game, resolution, and quality preset to get instant FPS estimates.
+- [Settings Optimizer](https://runfps.com/en/optimizer): enter a target FPS and get the exact settings to change, ordered by impact.
+- [Bottleneck Calculator](https://runfps.com/en/bottleneck): find out whether the CPU or GPU limits performance for a specific game.
+- [GPU Benchmarks](https://runfps.com/en/benchmarks/gpu): 95 GPUs ranked by gaming performance score with specs and per-GPU FPS tables.
+- [CPU Benchmarks](https://runfps.com/en/benchmarks/cpu): 104 CPUs ranked by gaming performance score with specs and per-CPU FPS tables.
+- [Games Library](https://runfps.com/en/games): 329 games with FPS estimates across 5 hardware tiers, system requirements, and optimization tips.
+- [Compare](https://runfps.com/en/compare): put two GPUs or two CPUs head-to-head across popular games.
+
+## Guides
+
+- [Why Is My FPS So Low? 7 Fixes That Actually Work](https://runfps.com/en/blog/why-is-my-fps-so-low/)
+- [Cyberpunk 2077 FPS Guide: Best Settings for Any GPU](https://runfps.com/en/blog/cyberpunk-2077-fps-settings/)
+- [Valorant Low FPS on a Good PC? It Is Probably Your CPU](https://runfps.com/en/blog/valorant-low-fps-good-pc/)
+
+## About
+
+- [How We Calculate](https://runfps.com/en/methodology): GPU/CPU scores, per-game performance curves, RAM, resolution, and preset modeling.
+- [FAQ](https://runfps.com/en/faq): common questions about estimates and features.
+
+Available in English, Deutsch, Français, Español, and Português (Brasil) under /en/, /de/, /fr/, /es/, and /pt/.
