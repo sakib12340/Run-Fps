@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { useTranslations, locales } from '../../../i18n/utils.js';
 import gamesData from '../../../data/games.json';
+import { gameBlurbs } from '../../../data/game-blurbs.js';
 import { genreLabels } from '../../../data/genres.js';
 import { getProfile } from '../../../data/profiles.js';
 import { profileTranslations } from '../../../data/profiles-i18n.js';
@@ -71,6 +72,7 @@ const genreLabel = genreLabels[game.genre] || game.genre;
 const curve = game.performanceCurve;
 const relatedGames = gamesData.games.filter(g => g.genre === game.genre && g.id !== game.id).slice(0, 4);
 const gameParam = game.title.toLowerCase().replace(/\s+/g, '-');
+const blurb = (gameBlurbs as Record<string, string>)[game.id] ?? null;
 ---
 
 <Layout title={t('games.detail.title', { game: game.title })} description={t('games.detail.description', { game: game.title, ram: game.ramRequirement, vram: game.vramRequirement })}>
@@ -98,6 +100,7 @@ const gameParam = game.title.toLowerCase().replace(/\s+/g, '-');
   <h1 class="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.03em] text-ink dark:text-dark-ink leading-[1.1]">{game.title}</h1>
   <p class="mt-2 text-mid-gray dark:text-dark-mid-gray text-sm">{game.developer} &middot; {game.releaseYear}</p>
   <p class="mt-3 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed max-w-2xl">Wondering how many FPS you'll get in {game.title}? The table below shows estimates across 5 PC tiers at 1080p High. {game.title} needs about {game.ramRequirement}GB RAM and {game.vramRequirement}GB VRAM — <a href={`/${locale}/calculator?game=${gameParam}`} class="underline underline-offset-2">check your exact GPU + CPU here</a>.</p>
+  {blurb && <p class="mt-3 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed max-w-2xl">{blurb}</p>}
 
   <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
     <div class="lg:col-span-2">

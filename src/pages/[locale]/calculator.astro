@@ -418,7 +418,7 @@ function readUrlParams() {
   const setSelectByLabel = (selectId, param, items, labelKey) => {
     const val = params.get(param);
     if (val !== null && items) {
-      const idx = items.findIndex(i => i[labelKey].toLowerCase() === val.toLowerCase());
+      const idx = items.findIndex(i => i[labelKey].toLowerCase().replace(/\s+/g, '-') === val.toLowerCase());
       if (idx >= 0) $(selectId).value = '' + idx;
     }
   };

@@ -23,6 +23,7 @@ export const translations = {
       games: 'Games',
       compare: 'Compare',
       faq: 'FAQ',
+      blog: 'Blog',
       about: 'About',
       contact: 'Contact',
       privacy: 'Privacy',
@@ -400,6 +401,12 @@ export const translations = {
       contact: 'Contact',
       contactText: 'Questions, feedback, or found a bug? Email us at {email}. We read every message.'
     },
+    blog: {
+      title: 'Blog - FPS Guides and Performance Tips',
+      description: 'Practical FPS guides: fix low frame rates, best settings for popular games, and hardware advice.',
+      heading: 'Blog',
+      tagline: 'FPS guides and performance tips.'
+    },
     faq: {
       title: 'FAQ - Frequently Asked Questions',
       description: 'Answers to common questions about RunFps FPS estimates, calculations, and features.',
@@ -515,6 +522,7 @@ export const translations = {
       games: 'Spiele',
       compare: 'Vergleich',
       faq: 'FAQ',
+      blog: 'Blog',
       about: 'Über uns',
       contact: 'Kontakt',
       privacy: 'Datenschutz',
@@ -1007,6 +1015,7 @@ export const translations = {
       games: 'Jeux',
       compare: 'Comparer',
       faq: 'FAQ',
+      blog: 'Blog',
       about: 'À propos',
       contact: 'Contact',
       privacy: 'Confidentialité',
@@ -1499,6 +1508,7 @@ export const translations = {
       games: 'Juegos',
       compare: 'Comparar',
       faq: 'FAQ',
+      blog: 'Blog',
       about: 'Sobre',
       contact: 'Contacto',
       privacy: 'Privacidad',
@@ -1991,6 +2001,7 @@ export const translations = {
       games: 'Jogos',
       compare: 'Comparar',
       faq: 'FAQ',
+      blog: 'Blog',
       about: 'Sobre',
       contact: 'Contato',
       privacy: 'Privacidade',

@@ -1,0 +1,75 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { useTranslations, locales } from '../../../i18n/utils.js';
+import blogData from '../../../data/blog.json';
+import gamesData from '../../../data/games.json';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const locale of locales) {
+    for (const post of blogData.posts) {
+      paths.push({ params: { locale, slug: post.slug }, props: { post } });
+    }
+  }
+  return paths;
+}
+
+const { locale } = Astro.params;
+const { post } = Astro.props;
+const { t } = useTranslations(locale);
+const body = post.body.replaceAll('{locale}', locale);
+const relatedGames = (post.games ?? [])
+  .map((id: string) => gamesData.games.find((g: any) => g.id === id))
+  .filter(Boolean)
+  .slice(0, 4);
+const relatedPosts = blogData.posts.filter(p => p.slug !== post.slug).slice(0, 2);
+---
+
+<Layout title={post.title} description={post.description}>
+  <div class="max-w-2xl mx-auto space-y-6">
+    <nav aria-label="Breadcrumb">
+      <ol class="flex items-center gap-1.5 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">
+        <li><a href={`/${locale}/`} class="hover:text-ink dark:hover:text-dark-ink transition-colors">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={`/${locale}/blog`} class="hover:text-ink dark:hover:text-dark-ink transition-colors">{t('blog.heading')}</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="text-ink dark:text-dark-ink truncate max-w-[180px]">{post.title}</li>
+      </ol>
+    </nav>
+
+    <div>
+      <h1 class="font-display text-2xl sm:text-3xl font-semibold tracking-[-0.02em] text-ink dark:text-dark-ink leading-tight">{post.title}</h1>
+      <p class="mt-1 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">{post.date}</p>
+    </div>
+
+    <article class="text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-ink [&_h2]:dark:text-dark-ink [&_h2]:pt-2 [&_a]:text-ink [&_a]:dark:text-dark-ink [&_a]:underline [&_a]:underline-offset-2" set:html={body}></article>
+
+    {relatedGames.length > 0 && (
+      <div>
+        <h2 class="font-display text-lg font-semibold text-ink dark:text-dark-ink">Games in this guide</h2>
+        <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {relatedGames.map((g: any) => (
+            <a href={`/${locale}/games/${g.id}`} class="card no-underline block">
+              <div class="font-display font-medium text-sm text-ink dark:text-dark-ink truncate">{g.title}</div>
+              <div class="mt-1 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">{g.releaseYear}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {relatedPosts.length > 0 && (
+      <div>
+        <h2 class="font-display text-lg font-semibold text-ink dark:text-dark-ink">Keep reading</h2>
+        <div class="mt-3 space-y-3">
+          {relatedPosts.map(r => (
+            <a href={`/${locale}/blog/${r.slug}`} class="card no-underline block group">
+              <div class="font-display font-medium text-sm text-ink dark:text-dark-ink group-hover:text-ember transition-colors duration-120">{r.title}</div>
+              <p class="mt-1 text-xs text-mid-gray dark:text-dark-mid-gray leading-relaxed">{r.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</Layout>

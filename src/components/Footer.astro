@@ -50,6 +50,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[^\/]+/, '') || '/';
         <h2 class="font-display font-semibold text-sm text-ink dark:text-dark-ink mb-3 tracking-tight">{t('footer.company')}</h2>
         <ul class="space-y-0 sm:space-y-1.5">
           <li><a href={p('/faq')} class="block py-2 sm:py-0.5 text-sm text-mid-gray dark:text-dark-mid-gray hover:text-ink dark:hover:text-dark-ink no-underline transition-colors duration-120">{t('footer.faq')}</a></li>
+          <li><a href={p('/blog')} class="block py-2 sm:py-0.5 text-sm text-mid-gray dark:text-dark-mid-gray hover:text-ink dark:hover:text-dark-ink no-underline transition-colors duration-120">{t('nav.blog')}</a></li>
           <li><a href={p('/about')} class="block py-2 sm:py-0.5 text-sm text-mid-gray dark:text-dark-mid-gray hover:text-ink dark:hover:text-dark-ink no-underline transition-colors duration-120">{t('footer.about')}</a></li>
           <li><a href={p('/methodology')} class="block py-2 sm:py-0.5 text-sm text-mid-gray dark:text-dark-mid-gray hover:text-ink dark:hover:text-dark-ink no-underline transition-colors duration-120">{t('methodology.heading')}</a></li>
           <li><a href={p('/privacy')} class="block py-2 sm:py-0.5 text-sm text-mid-gray dark:text-dark-mid-gray hover:text-ink dark:hover:text-dark-ink no-underline transition-colors duration-120">{t('footer.privacyPolicy')}</a></li>
