@@ -1,0 +1,145 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { useTranslations, locales } from '../../../../i18n/utils.js';
+import { gpus } from '../../../../data/gpus.json';
+import { cpus } from '../../../../data/cpus.json';
+import { games } from '../../../../data/games.json';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const locale of locales) {
+    for (const gpu of gpus) {
+      paths.push({ params: { locale, slug: gpu.id }, props: { gpu } });
+    }
+  }
+  return paths;
+}
+
+const { locale } = Astro.params;
+const { gpu } = Astro.props;
+const { t } = useTranslations(locale);
+const topCpus = [...cpus].sort((a, b) => b.score - a.score).slice(0, 4);
+const topGames = games.slice(0, 8);
+const refCpu = cpus.find(c => c.id === 'ryzen-7-7800x3d') ?? topCpus[0];
+
+// master-code: duplicated engine math for SSR first-paint; client engine.js stays authoritative for interactive recalcs
+function interpolate(point: number, curve: any[]) {
+  const sorted = [...curve].sort((a: any, b: any) => a.gpuScore - b.gpuScore);
+  if (point <= sorted[0].gpuScore) return sorted[0].fps;
+  if (point >= sorted[sorted.length - 1].gpuScore) return sorted[sorted.length - 1].fps;
+  let i = 0;
+  while (i < sorted.length - 1 && sorted[i + 1].gpuScore <= point) i++;
+  if (i === 0) i = 1;
+  if (i >= sorted.length - 1) i = sorted.length - 2;
+  const p0 = sorted[i - 1], p1 = sorted[i], p2 = sorted[i + 1], p3 = sorted[Math.min(i + 2, sorted.length - 1)];
+  const t = (point - p1.gpuScore) / (p2.gpuScore - p1.gpuScore);
+  const t2 = t * t, t3 = t2 * t;
+  return 0.5 * ((2 * p1.fps) + (-p0.fps + p2.fps) * t + (2 * p0.fps - 5 * p1.fps + 4 * p2.fps - p3.fps) * t2 + (-p0.fps + 3 * p1.fps - 3 * p2.fps + p3.fps) * t3);
+}
+function ssrFps(game: any, gpuItem: any, cpu: any) {
+  const curve = game.performanceCurve;
+  const base = interpolate(gpuItem.score, curve);
+  const cpuFactor = 1.0 - (game.cpuWeight * (1.0 - cpu.score / 100));
+  return Math.round(base * cpuFactor * 0.9);
+}
+---
+
+<Layout title={`${gpu.name} - ${t('benchmarks.gpu.title')}`} description={`${gpu.name} ${gpu.vram}GB VRAM benchmark. Estimated FPS in ${topGames.length} games at 1080p High.`}>
+<script is:inline src="/engine.js" type="module"></script>
+
+<script type="application/json" id="gpu-data" set:html={JSON.stringify(gpu)}></script>
+<script type="application/json" id="cpus-data" set:html={JSON.stringify(topCpus)}></script>
+<script type="application/json" id="games-data" set:html={JSON.stringify(topGames)}></script>
+
+<div class="space-y-6">
+  <div class="card">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="font-display text-2xl font-semibold text-ink dark:text-dark-ink tracking-tight">{gpu.name}</h1>
+        <p class="text-sm text-mid-gray dark:text-dark-mid-gray">{gpu.brand} &middot; {gpu.generation} &middot; {gpu.launchYear}</p>
+      </div>
+      <span class="badge text-xs">{gpu.brand}</span>
+    </div>
+
+    <div class="mb-4">
+      <div class="flex justify-between text-sm font-mono mb-1">
+        <span class="text-mid-gray dark:text-dark-mid-gray">{t('compare.score')}</span>
+        <span class="text-ink dark:text-dark-ink font-semibold">{gpu.score}/100</span>
+      </div>
+      <div class="h-3 bg-canvas dark:bg-dark-canvas rounded-full overflow-hidden">
+        <div class="h-full rounded-full bg-mid-gray dark:bg-dark-mid-gray" style={`width:${gpu.score}%`}></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+      <div class="p-3 bg-canvas dark:bg-dark-canvas rounded-card">
+        <div class="font-display text-lg font-semibold text-ink dark:text-dark-ink">{gpu.vram}GB</div>
+        <div class="text-xs text-mid-gray dark:text-dark-mid-gray font-mono">VRAM</div>
+      </div>
+      <div class="p-3 bg-canvas dark:bg-dark-canvas rounded-card">
+        <div class="font-display text-lg font-semibold text-ink dark:text-dark-ink">{gpu.tdp}W</div>
+        <div class="text-xs text-mid-gray dark:text-dark-mid-gray font-mono">TDP</div>
+      </div>
+      <div class="p-3 bg-canvas dark:bg-dark-canvas rounded-card">
+        <div class="font-display text-lg font-semibold text-ink dark:text-dark-ink">{gpu.launchYear}</div>
+        <div class="text-xs text-mid-gray dark:text-dark-mid-gray font-mono">{t('benchmarks.cpu.launchYear')}</div>
+      </div>
+      <div class="p-3 bg-canvas dark:bg-dark-canvas rounded-card">
+        <div class="font-display text-lg font-semibold text-ink dark:text-dark-ink capitalize">{gpu.tier}</div>
+        <div class="text-xs text-mid-gray dark:text-dark-mid-gray font-mono">{t('benchmarks.cpu.tier')}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="font-display text-lg font-semibold text-ink dark:text-dark-ink mb-4">{t('misc.estimatedFps')} {topGames.length} Games</h2>
+    <p class="text-xs text-mid-gray dark:text-dark-mid-gray mb-4 font-mono">Using {refCpu.name}, 16GB DDR5-6000, NVMe at 1080p High preset.</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-hairline dark:border-dark-hairline">
+            <th scope="col" class="text-left py-2 pr-4 font-mono text-xs text-mid-gray dark:text-dark-mid-gray font-medium">Game</th>
+            {topCpus.map((c) => (
+              <th scope="col" class="text-right px-2 py-2 font-mono text-xs text-mid-gray dark:text-dark-mid-gray font-medium">{c.name}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody id="fps-body">
+          {topGames.map(game => (
+            <tr class="border-b border-hairline dark:border-dark-hairline">
+              <td class="py-2 pr-4 text-ink dark:text-dark-ink font-medium">{game.title}</td>
+              {topCpus.map(c => (
+                <td class="text-right px-2 py-2 font-mono text-ink dark:text-dark-ink">{ssrFps(game, gpu, c)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function() {
+  const gpu = JSON.parse(document.getElementById('gpu-data')!.textContent ?? '');
+  const cpus: any[] = JSON.parse(document.getElementById('cpus-data')!.textContent ?? '');
+  const games: any[] = JSON.parse(document.getElementById('games-data')!.textContent ?? '');
+  const engine = (window as any).RunFpsEngine;
+  if (!engine) return;
+  const config = { ramCapacity: 16, ramType: 'ddr5', ramSpeed: 6000, ramChannel: 'dual', storage: 'nvme', resolution: '1080p', preset: 'high', rtEnabled: false, upscaling: 'none', resolutionScale: 100, frameCap: 0, monitorHz: 144, vramLimit: 0, os: 'windows' };
+  const body = document.getElementById('fps-body');
+  if (!body) return;
+  body.innerHTML = games.map((game: any) => {
+    const f = cpus.map((c: any) => {
+      const result = engine.calculateFPS(config, game, gpu, c);
+      return result.avgFps;
+    });
+    return `<tr class="border-b border-hairline dark:border-dark-hairline">
+      <td class="py-2 pr-4 text-ink dark:text-dark-ink font-medium">${game.title}</td>
+      ${f.map((v: any) => `<td class="text-right px-2 py-2 font-mono text-ink dark:text-dark-ink">${v}</td>`).join('')}
+    </tr>`;
+  }).join('');
+})();
+</script>
+
+</Layout>

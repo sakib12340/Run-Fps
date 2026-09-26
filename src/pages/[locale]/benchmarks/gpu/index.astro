@@ -13,6 +13,7 @@ const { t } = useTranslations(locale);
 const brands = [...new Set(gpus.map(g => g.brand))];
 const tiers = [...new Set(gpus.map(g => g.tier))];
 const sorted = [...gpus].sort((a, b) => b.score - a.score);
+const initialGpus = sorted.slice(0, 24);
 const ui = {
   showMore: t('benchmarks.gpu.showMore'),
   search: t('benchmarks.gpu.search'),
@@ -59,9 +60,35 @@ const ui = {
     </select>
   </div>
 
-  <p id="gpu-result-count" class="text-xs text-mid-gray dark:text-dark-mid-gray font-mono" aria-live="polite" aria-atomic="true"></p>
+  <p id="gpu-result-count" class="text-xs text-mid-gray dark:text-dark-mid-gray font-mono" aria-live="polite" aria-atomic="true">{t('benchmarks.gpu.count', { count: gpus.length })}</p>
 
-  <div id="gpu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  <div id="gpu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {initialGpus.map(g => (
+      <a href={`/${locale}/benchmarks/gpu/${g.id}`} class="card flex flex-col gap-3 no-underline group">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="font-display text-base font-medium text-ink dark:text-dark-ink group-hover:text-ember transition-colors duration-120">{g.name}</h2>
+            <span class="text-xs text-mid-gray dark:text-dark-mid-gray">{g.brand} &middot; {g.generation}</span>
+          </div>
+          <span class="badge text-xs">{g.brand}</span>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs font-mono mb-1">
+            <span class="text-mid-gray dark:text-dark-mid-gray">{t('compare.score')}</span>
+            <span class="text-ink dark:text-dark-ink font-semibold">{g.score}/100</span>
+          </div>
+          <div class="h-2 bg-canvas dark:bg-dark-canvas rounded-full overflow-hidden">
+            <div class="h-full rounded-full bg-mid-gray dark:bg-dark-mid-gray" style={`width:${g.score}%`}></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">
+          <span>{g.vram}GB VRAM</span>
+          <span>{g.tdp}W</span>
+          <span>{g.launchYear}</span>
+        </div>
+      </a>
+    ))}
+  </div>
 
   <div id="see-more-container" class="mt-6 text-center hidden">
     <button id="see-more-btn" class="px-5 py-2 bg-canvas dark:bg-dark-paper text-ink dark:text-dark-ink text-sm font-medium rounded-pill border border-hairline dark:border-dark-hairline cursor-pointer hover:scale-[1.02] transition-all duration-120">{ui.showMore}</button>

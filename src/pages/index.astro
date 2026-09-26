@@ -44,6 +44,7 @@ import Footer from '../components/Footer.astro';
   <link rel="alternate" hreflang="es" href="https://runfps.com/es/"/>
   <link rel="alternate" hreflang="pt" href="https://runfps.com/pt/"/>
   <link rel="alternate" hreflang="x-default" href="https://runfps.com/en/"/>
+  <meta http-equiv="refresh" content="0; url=/en/"/>
   <script>
     var locales = { en: 'en', de: 'de', fr: 'fr', es: 'es', pt: 'pt' };
     var lang = (navigator.language || 'en').split('-')[0];
@@ -58,7 +59,21 @@ import Footer from '../components/Footer.astro';
 </head>
 <body>
   <Header currentLocale="en" />
-  <p>Redirecting to <a href="/en/">RunFps</a>...</p>
+  <main class="max-w-[1280px] mx-auto px-4 py-8">
+    <h1>RunFps - Check Your FPS in Any Game</h1>
+    <p>Free PC gaming performance calculator and bottleneck analyzer.</p>
+    <p>Redirecting to <a href="/en/">RunFps</a>...</p>
+    <ul>
+      <li><a href="/en/">English</a></li>
+      <li><a href="/de/">Deutsch</a></li>
+      <li><a href="/fr/">Français</a></li>
+      <li><a href="/es/">Español</a></li>
+      <li><a href="/pt/">Português</a></li>
+      <li><a href="/en/calculator">FPS Calculator</a></li>
+      <li><a href="/en/games">Games Library</a></li>
+      <li><a href="/en/benchmarks/gpu">GPU Benchmarks</a></li>
+    </ul>
+  </main>
 </body>
 </html>
 

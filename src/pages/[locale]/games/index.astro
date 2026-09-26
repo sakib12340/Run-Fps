@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 const { locale } = Astro.params;
 const { t } = useTranslations(locale);
 const gameCount = gamesData.games.length;
+const initialGames = gamesData.games.slice(0, 24);
 const ui = {
   showMore: t('games.index.showMore'),
   noResults: t('games.index.noResults'),
@@ -38,9 +39,21 @@ const ui = {
     ))}
   </div>
 
-  <p id="result-count" class="mt-3 text-xs text-mid-gray dark:text-dark-mid-gray font-mono" aria-live="polite" aria-atomic="true"></p>
+  <p id="result-count" class="mt-3 text-xs text-mid-gray dark:text-dark-mid-gray font-mono" aria-live="polite" aria-atomic="true">{t('games.index.count', { count: gameCount })}</p>
 
   <div id="games-grid" class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+    {initialGames.map(g => (
+      <a href={`/${locale}/games/${g.id}`} class="card flex flex-col h-full no-underline group cursor-pointer">
+        <div class="flex items-start justify-between gap-2">
+          <h2 class="font-display font-medium text-base text-ink dark:text-dark-ink leading-snug truncate group-hover:text-ember transition-colors duration-120">{g.title}</h2>
+          <span class="shrink-0 text-xs font-mono text-mid-gray dark:text-dark-mid-gray">{g.releaseYear}</span>
+        </div>
+        <div class="mt-1.5 flex items-center gap-1.5 flex-wrap">
+          <span class={`badge badge-${g.genre}`}>{genreLabels[g.genre] || g.genre}</span>
+          <span class="badge capitalize">{g.optimizationTier}</span>
+        </div>
+      </a>
+    ))}
   </div>
 
   <div id="see-more-container" class="mt-6 text-center hidden">
