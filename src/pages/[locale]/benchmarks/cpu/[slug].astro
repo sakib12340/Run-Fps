@@ -39,9 +39,44 @@ function ssrFps(game: any, gpuItem: any, cpuItem: any) {
   const cpuFactor = 1.0 - (game.cpuWeight * (1.0 - cpuItem.score / 100));
   return Math.round(base * cpuFactor * 0.9);
 }
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `https://runfps.com/${locale}/` },
+    { "@type": "ListItem", "position": 2, "name": "CPU Benchmarks", "item": `https://runfps.com/${locale}/benchmarks/cpu/` },
+    { "@type": "ListItem", "position": 3, "name": cpu.name, "item": `https://runfps.com/${locale}/benchmarks/cpu/${cpu.id}/` }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `Is the ${cpu.name} good for gaming?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `The ${cpu.name} scores ${cpu.score}/100 with ${cpu.cores} cores and ${cpu.threads} threads. Check the FPS table above across ${topGames.length} games to see gaming performance.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Will the ${cpu.name} bottleneck my GPU?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `It depends on the game and GPU pairing. Run your exact CPU and GPU through the bottleneck calculator for your game to check.`
+      }
+    }
+  ]
+};
 ---
 
 <Layout title={`${cpu.name} - ${t('benchmarks.cpu.title')}`} description={`${cpu.name} ${t('misc.estimatedFps')} ${topGames.length} games.`}>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 <script is:inline src="/engine.js" type="module"></script>
 
 <script type="application/json" id="cpu-data" set:html={JSON.stringify(cpu)}></script>
@@ -49,6 +84,15 @@ function ssrFps(game: any, gpuItem: any, cpuItem: any) {
 <script type="application/json" id="games-data" set:html={JSON.stringify(topGames)}></script>
 
 <div class="space-y-6">
+  <nav aria-label="Breadcrumb" class="mb-1">
+    <ol class="flex items-center gap-1.5 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">
+      <li><a href={`/${locale}/`} class="hover:text-ink dark:hover:text-dark-ink transition-colors">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href={`/${locale}/benchmarks/cpu`} class="hover:text-ink dark:hover:text-dark-ink transition-colors">CPU Benchmarks</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page" class="text-ink dark:text-dark-ink truncate max-w-[180px]">{cpu.name}</li>
+    </ol>
+  </nav>
   <div class="card">
     <div class="flex items-center justify-between mb-4">
       <div>
@@ -112,6 +156,20 @@ function ssrFps(game: any, gpuItem: any, cpuItem: any) {
           ))}
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="font-display text-lg font-semibold text-ink dark:text-dark-ink mb-4">{cpu.name} FAQ</h2>
+    <div class="space-y-4">
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">Is the {cpu.name} good for gaming?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">The {cpu.name} scores {cpu.score}/100 with {cpu.cores} cores and {cpu.threads} threads. Check the FPS table above across {topGames.length} games.</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">Will the {cpu.name} bottleneck my GPU?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">It depends on the game and GPU pairing. Run your exact parts through the <a href={`/${locale}/bottleneck`} class="underline underline-offset-2">bottleneck calculator</a> for your game.</p>
+      </div>
     </div>
   </div>
 </div>

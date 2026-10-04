@@ -22,6 +22,47 @@ const topCpus = [...cpus].sort((a, b) => b.score - a.score).slice(0, 4);
 const topGames = games.slice(0, 8);
 const refCpu = cpus.find(c => c.id === 'ryzen-7-7800x3d') ?? topCpus[0];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `https://runfps.com/${locale}/` },
+    { "@type": "ListItem", "position": 2, "name": "GPU Benchmarks", "item": `https://runfps.com/${locale}/benchmarks/gpu/` },
+    { "@type": "ListItem", "position": 3, "name": gpu.name, "item": `https://runfps.com/${locale}/benchmarks/gpu/${gpu.id}/` }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `How good is the ${gpu.name} for gaming?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `The ${gpu.name} scores ${gpu.score}/100 with ${gpu.vram}GB VRAM. Check the FPS table above across ${topGames.length} games at 1080p High to see what it runs.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How many FPS does the ${gpu.name} get?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `FPS depends on the game and CPU pairing. The table above shows estimated FPS in ${topGames.length} games using a high-end CPU at 1080p High.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Is the ${gpu.name} good for 1440p or 4K?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": gpu.score >= 85 ? `Yes — with a score of ${gpu.score}/100 it handles 4K well in most games.` : gpu.score >= 65 ? `Yes for 1440p in most games; 4K needs lowered settings or upscaling.` : `It is best at 1080p; higher resolutions need lowered settings or upscaling.`
+      }
+    }
+  ]
+};
+
 // master-code: duplicated engine math for SSR first-paint; client engine.js stays authoritative for interactive recalcs
 function interpolate(point: number, curve: any[]) {
   const sorted = [...curve].sort((a: any, b: any) => a.gpuScore - b.gpuScore);
@@ -45,6 +86,8 @@ function ssrFps(game: any, gpuItem: any, cpu: any) {
 ---
 
 <Layout title={`${gpu.name} - ${t('benchmarks.gpu.title')}`} description={`${gpu.name} ${gpu.vram}GB VRAM benchmark. Estimated FPS in ${topGames.length} games at 1080p High.`}>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 <script is:inline src="/engine.js" type="module"></script>
 
 <script type="application/json" id="gpu-data" set:html={JSON.stringify(gpu)}></script>
@@ -52,6 +95,15 @@ function ssrFps(game: any, gpuItem: any, cpu: any) {
 <script type="application/json" id="games-data" set:html={JSON.stringify(topGames)}></script>
 
 <div class="space-y-6">
+  <nav aria-label="Breadcrumb" class="mb-1">
+    <ol class="flex items-center gap-1.5 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">
+      <li><a href={`/${locale}/`} class="hover:text-ink dark:hover:text-dark-ink transition-colors">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href={`/${locale}/benchmarks/gpu`} class="hover:text-ink dark:hover:text-dark-ink transition-colors">GPU Benchmarks</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page" class="text-ink dark:text-dark-ink truncate max-w-[180px]">{gpu.name}</li>
+    </ol>
+  </nav>
   <div class="card">
     <div class="flex items-center justify-between mb-4">
       <div>
@@ -115,6 +167,20 @@ function ssrFps(game: any, gpuItem: any, cpu: any) {
           ))}
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="font-display text-lg font-semibold text-ink dark:text-dark-ink mb-4">{gpu.name} FAQ</h2>
+    <div class="space-y-4">
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">How good is the {gpu.name} for gaming?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">The {gpu.name} scores {gpu.score}/100 with {gpu.vram}GB VRAM. Check the FPS table above across {topGames.length} games at 1080p High.</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">How many FPS does the {gpu.name} get?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">FPS depends on the game and CPU pairing. The table above shows estimated FPS in {topGames.length} games using a high-end CPU at 1080p High.</p>
+      </div>
     </div>
   </div>
 </div>

@@ -29,14 +29,37 @@ const articleSchema = {
   "@type": "BlogPosting",
   "headline": post.title,
   "description": post.description,
+  "image": "https://runfps.com/web-app-manifest-512x512.png",
   "datePublished": post.date,
+  "dateModified": post.date,
+  "inLanguage": locale,
   "author": { "@type": "Organization", "name": "RunFps", "url": "https://runfps.com" },
-  "mainEntityOfPage": `https://runfps.com/${locale}/blog/${post.slug}/`
+  "publisher": {
+    "@type": "Organization",
+    "name": "RunFps",
+    "url": "https://runfps.com",
+    "logo": { "@type": "ImageObject", "url": "https://runfps.com/web-app-manifest-512x512.png" }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://runfps.com/${locale}/blog/${post.slug}/`
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `https://runfps.com/${locale}/` },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `https://runfps.com/${locale}/blog/` },
+    { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://runfps.com/${locale}/blog/${post.slug}/` }
+  ]
 };
 ---
 
 <Layout title={post.title} description={post.description}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
   <div class="max-w-2xl mx-auto space-y-6">
     <nav aria-label="Breadcrumb">
       <ol class="flex items-center gap-1.5 text-xs text-mid-gray dark:text-dark-mid-gray font-mono">

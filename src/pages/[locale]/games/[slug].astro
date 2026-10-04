@@ -24,20 +24,55 @@ const profile = getProfile(game.id);
 const localizedProfile = locale !== 'en'
   ? profileTranslations[game.id as keyof typeof profileTranslations]?.[locale as keyof typeof profileTranslations[keyof typeof profileTranslations]] ?? null
   : null;
+const genreLabel = genreLabels[game.genre] || game.genre;
 
 const gameSchema = {
   "@context": "https://schema.org",
-  "@type": "Game",
+  "@type": "VideoGame",
   "name": game.title,
   "description": `Check FPS estimates for ${game.title} across 5 hardware tiers at 1080p and 1440p. System requirements: ${game.ramRequirement}GB RAM, ${game.vramRequirement}GB VRAM.`,
-  "publisher": {
+  "genre": genreLabel,
+  "applicationCategory": "Game",
+  "operatingSystem": "Windows",
+  "author": {
     "@type": "Organization",
-    "name": "RunFps",
-    "url": "https://runfps.com"
+    "name": game.developer
   },
-  "releaseYear": game.releaseYear,
-  "url": `https://runfps.com/${locale}/games/${game.id}`,
-  "operatingSystem": ["Windows", "macOS", "Linux"]
+  "datePublished": `${game.releaseYear}`,
+  "url": `https://runfps.com/${locale}/games/${game.id}/`,
+  "image": `https://runfps.com/web-app-manifest-512x512.png`,
+  "inLanguage": locale
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `How many FPS will I get in ${game.title}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${game.title} needs about ${game.ramRequirement}GB RAM and ${game.vramRequirement}GB VRAM. FPS depends on your GPU and CPU — check the estimates table above across 5 hardware tiers at 1080p High, or run your exact parts through the FPS calculator.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What are the system requirements for ${game.title}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${game.title} (${game.releaseYear}) requires approximately ${game.ramRequirement}GB RAM and ${game.vramRequirement}GB VRAM. It supports ${[game.dlss && "DLSS", game.fsr && "FSR"].filter(Boolean).join(" and ") || "no upscaling"}.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How do I boost FPS in ${game.title}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Enable ${[game.dlss && "DLSS Quality", game.fsr && "FSR Balanced"].filter(Boolean).join(" or ") || "upscaling if available"}, lower shadows and volumetrics first, and keep textures high if your VRAM covers it. Use the settings optimizer for your target FPS.`
+      }
+    }
+  ]
 };
 
 const breadcrumbSchema = {
@@ -68,7 +103,6 @@ function getFpsAtScore(curve: { gpuScore: number; fps: number }[], score: number
   return score <= curve[0].gpuScore ? curve[0].fps : curve[curve.length - 1].fps;
 }
 
-const genreLabel = genreLabels[game.genre] || game.genre;
 const curve = game.performanceCurve;
 const relatedGames = gamesData.games.filter(g => g.genre === game.genre && g.id !== game.id).slice(0, 4);
 const gameParam = game.title.toLowerCase().replace(/\s+/g, '-');
@@ -78,6 +112,7 @@ const blurb = (gameBlurbs as Record<string, string>)[game.id] ?? null;
 <Layout title={t('games.detail.title', { game: game.title })} description={t('games.detail.description', { game: game.title, ram: game.ramRequirement, vram: game.vramRequirement })}>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(gameSchema)}></script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
 <div class="py-6">
   <nav aria-label="Breadcrumb" class="mb-4">
@@ -192,6 +227,24 @@ const blurb = (gameBlurbs as Record<string, string>)[game.id] ?? null;
           </ul>
         </div>
       )}
+    </div>
+  </div>
+
+  <div class="mt-8 card">
+    <h2 class="font-display text-lg font-semibold text-ink dark:text-dark-ink">{game.title} FAQ</h2>
+    <div class="mt-3 space-y-4">
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">How many FPS will I get in {game.title}?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">FPS depends on your GPU and CPU. The estimates table above shows 5 hardware tiers at 1080p High — {game.title} needs about {game.ramRequirement}GB RAM and {game.vramRequirement}GB VRAM. Run your exact parts through the <a href={`/${locale}/calculator?game=${gameParam}`} class="underline underline-offset-2">FPS calculator</a> for your number.</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">What are the system requirements for {game.title}?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">{game.title} ({game.releaseYear}) by {game.developer} requires approximately {game.ramRequirement}GB RAM and {game.vramRequirement}GB VRAM.</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-medium text-ink dark:text-dark-ink">How do I boost FPS in {game.title}?</h3>
+        <p class="mt-1 text-sm text-mid-gray dark:text-dark-mid-gray leading-relaxed">Enable upscaling if available, lower shadows and volumetrics first, and keep textures high if your VRAM covers it. Use the <a href={`/${locale}/optimizer`} class="underline underline-offset-2">settings optimizer</a> for your target FPS.</p>
+      </div>
     </div>
   </div>
 

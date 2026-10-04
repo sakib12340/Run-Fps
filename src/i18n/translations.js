@@ -297,8 +297,8 @@ export const translations = {
         midRangePc: 'Mid-range PC'
       },
       detail: {
-        title: '{game} - FPS Estimates & System Requirements',
-        description: 'Check FPS estimates for {game} across 5 hardware tiers at 1080p and 1440p. System requirements: {ram}GB RAM, {vram}GB VRAM.',
+        title: '{game}: How Many FPS? Estimates & System Requirements',
+        description: 'How many FPS will you get in {game}? Estimates across 5 hardware tiers at 1080p and 1440p. Requirements: {ram}GB RAM, {vram}GB VRAM.',
         fpsEstimates: 'FPS Estimates',
         estimatedFps: 'Estimated frames per second across presets',
         tier: 'Tier',
@@ -2275,8 +2275,8 @@ export const translations = {
         midRangePc: 'PC intermediário'
       },
       detail: {
-        title: '{game} - Estimativa de FPS e Requisitos',
-        description: 'Veja FPS estimado para {game} em 5 tiers em 1080p e 1440p. Requisitos: {ram}GB RAM, {vram}GB VRAM.',
+        title: '{game}: Quantos FPS? Estimativas e Requisitos',
+        description: 'Quantos FPS seu PC roda em {game}? Estimativas em 5 tiers em 1080p e 1440p. Requisitos: {ram}GB RAM, {vram}GB VRAM.',
         fpsEstimates: 'Estimativas de FPS',
         estimatedFps: 'Frames por segundo estimados por preset',
         tier: 'Tier',
